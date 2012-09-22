@@ -1,0 +1,29 @@
+<h1>Listing seccions</h1>
+
+<table>
+  <tr>
+    <th>Materia</th>
+    <th>Etiqueta</th>
+    <th>Profesor</th>
+    <th>Salon</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seccions.each do |seccion| %>
+  <tr>
+    <td><%= seccion.materia %></td>
+    <td><%= seccion.etiqueta %></td>
+    <td><%= seccion.profesor %></td>
+    <td><%= seccion.salon %></td>
+    <td><%= link_to 'Show', seccion %></td>
+    <td><%= link_to 'Edit', edit_seccion_path(seccion) %></td>
+    <td><%= link_to 'Destroy', seccion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Seccion', new_seccion_path %>

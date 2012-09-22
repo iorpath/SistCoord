@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922213301) do
+ActiveRecord::Schema.define(:version => 20120922231842) do
 
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(:version => 20120922213301) do
 
   add_index "homologacions", ["estudiante_id"], :name => "index_homologacions_on_estudiante_id"
   add_index "homologacions", ["materia_id"], :name => "index_homologacions_on_materia_id"
+
+  create_table "horarios", :force => true do |t|
+    t.integer  "seccion_id"
+    t.string   "dia"
+    t.time     "hora_inicio"
+    t.time     "hora_fin"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "horarios", ["seccion_id"], :name => "index_horarios_on_seccion_id"
 
   create_table "materia", :force => true do |t|
     t.string   "codigo"
@@ -78,6 +89,17 @@ ActiveRecord::Schema.define(:version => 20120922213301) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "seccions", :force => true do |t|
+    t.integer  "materia_id"
+    t.string   "etiqueta"
+    t.string   "profesor"
+    t.string   "salon"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "seccions", ["materia_id"], :name => "index_seccions_on_materia_id"
 
   create_table "tipo_pensums", :force => true do |t|
     t.integer  "pensum_id"

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Materia:</b>
+  <%= @seccion.materia %>
+</p>
+
+<p>
+  <b>Etiqueta:</b>
+  <%= @seccion.etiqueta %>
+</p>
+
+<p>
+  <b>Profesor:</b>
+  <%= @seccion.profesor %>
+</p>
+
+<p>
+  <b>Salon:</b>
+  <%= @seccion.salon %>
+</p>
+
+
+<%= link_to 'Edit', edit_seccion_path(@seccion) %> |
+<%= link_to 'Back', seccions_path %>

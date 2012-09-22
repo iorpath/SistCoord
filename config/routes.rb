@@ -1,5 +1,9 @@
 SistCoord::Application.routes.draw do
 
+  resources :horarios
+
+  resources :seccions
+
   resources :homologacions
 
   resources :pensums
