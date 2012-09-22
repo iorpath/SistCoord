@@ -1,0 +1,45 @@
+<%= form_for(@estudiante) do |f| %>
+  <% if @estudiante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estudiante.errors.count, "error") %> prohibited this estudiante from being saved:</h2>
+
+      <ul>
+      <% @estudiante.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :foto %><br />
+    <%= f.text_field :foto %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br />
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_estudiante %><br />
+    <%= f.text_field :tipo_estudiante %>
+  </div>
+  <div class="field">
+    <%= f.label :documento %><br />
+    <%= f.text_field :documento %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo_documento %><br />
+    <%= f.text_field :tipo_documento %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

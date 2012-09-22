@@ -1,4 +1,5 @@
 SistCoord::Application.routes.draw do
+
   resources :homologacions
 
   resources :pensums
@@ -8,6 +9,9 @@ SistCoord::Application.routes.draw do
   resources :tipo_pensums
 
   resources :materia
+
+  resources :estudiantes
+
 
   authenticated :user do
     root :to => 'home#index'

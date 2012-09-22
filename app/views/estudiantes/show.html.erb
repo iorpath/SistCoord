@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @estudiante.user %>
+</p>
+
+<p>
+  <b>Foto:</b>
+  <%= @estudiante.foto %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @estudiante.direccion %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%= @estudiante.telefono %>
+</p>
+
+<p>
+  <b>Tipo estudiante:</b>
+  <%= @estudiante.tipo_estudiante %>
+</p>
+
+<p>
+  <b>Documento:</b>
+  <%= @estudiante.documento %>
+</p>
+
+<p>
+  <b>Tipo documento:</b>
+  <%= @estudiante.tipo_documento %>
+</p>
+
+
+<%= link_to 'Edit', edit_estudiante_path(@estudiante) %> |
+<%= link_to 'Back', estudiantes_path %>
