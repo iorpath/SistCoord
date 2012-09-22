@@ -11,8 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20120922231842) do
+
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
     t.string   "foto"
