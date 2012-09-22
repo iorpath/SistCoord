@@ -11,8 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922231842) do
 
+ActiveRecord::Schema.define(:version => 20120922231842) do
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
     t.string   "foto"
@@ -51,6 +51,16 @@ ActiveRecord::Schema.define(:version => 20120922231842) do
 
   add_index "horarios", ["seccion_id"], :name => "index_horarios_on_seccion_id"
 
+  create_table "maestria", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "nombre"
+    t.string   "codigo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "maestria", ["user_id"], :name => "index_maestria_on_user_id"
+
   create_table "materia", :force => true do |t|
     t.string   "codigo"
     t.string   "nombre"
@@ -70,11 +80,12 @@ ActiveRecord::Schema.define(:version => 20120922231842) do
   add_index "materia_tipo_pensums", ["tipopensum_id"], :name => "index_materia_tipo_pensums_on_tipopensum_id"
 
   create_table "pensums", :force => true do |t|
+    t.date     "fechacreacion"
     t.string   "nombre"
-    t.date     "fecha_creacion"
+    t.boolean  "estado"
     t.integer  "maestria_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "pensums", ["maestria_id"], :name => "index_pensums_on_maestria_id"

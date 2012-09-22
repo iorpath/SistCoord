@@ -1,4 +1,5 @@
 class Pensum < ActiveRecord::Base
   belongs_to :maestria
-  attr_accessible :fecha_creacion, :nombre
+  has_many :tipo_pensum
+  attr_accessible :estado, :fechacreacion, :nombre, :maestria, :tipo_pensum
 end

@@ -12,12 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :fechacreacion %><br />
+    <%= f.date_select :fechacreacion %>
+  </div>
+  <div class="field">
     <%= f.label :nombre %><br />
     <%= f.text_field :nombre %>
   </div>
   <div class="field">
-    <%= f.label :fecha_creacion %><br />
-    <%= f.date_select :fecha_creacion %>
+    <%= f.label :estado %><br />
+    <%= f.check_box :estado %>
   </div>
   <div class="field">
     <%= f.label :maestria %><br />
