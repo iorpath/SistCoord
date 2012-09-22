@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @pensum.nombre %>
+</p>
+
+<p>
+  <b>Fecha creacion:</b>
+  <%= @pensum.fecha_creacion %>
+</p>
+
+<p>
+  <b>Maestria:</b>
+  <%= @pensum.maestria %>
+</p>
+
+
+<%= link_to 'Edit', edit_pensum_path(@pensum) %> |
+<%= link_to 'Back', pensums_path %>

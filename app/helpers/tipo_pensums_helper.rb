@@ -1,0 +1,2 @@
+module TipoPensumsHelper
+end

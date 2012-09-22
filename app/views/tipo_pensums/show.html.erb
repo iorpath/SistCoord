@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pensum:</b>
+  <%= @tipo_pensum.pensum %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @tipo_pensum.descripcion %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @tipo_pensum.cantidad %>
+</p>
+
+
+<%= link_to 'Edit', edit_tipo_pensum_path(@tipo_pensum) %> |
+<%= link_to 'Back', tipo_pensums_path %>

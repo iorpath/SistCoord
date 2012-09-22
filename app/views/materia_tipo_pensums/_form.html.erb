@@ -1,0 +1,25 @@
+<%= form_for(@materia_tipo_pensum) do |f| %>
+  <% if @materia_tipo_pensum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@materia_tipo_pensum.errors.count, "error") %> prohibited this materia_tipo_pensum from being saved:</h2>
+
+      <ul>
+      <% @materia_tipo_pensum.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :materia %><br />
+    <%= f.text_field :materia %>
+  </div>
+  <div class="field">
+    <%= f.label :tipopensum %><br />
+    <%= f.text_field :tipopensum %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Materia:</b>
+  <%= @materia_tipo_pensum.materia %>
+</p>
+
+<p>
+  <b>Tipopensum:</b>
+  <%= @materia_tipo_pensum.tipopensum %>
+</p>
+
+
+<%= link_to 'Edit', edit_materia_tipo_pensum_path(@materia_tipo_pensum) %> |
+<%= link_to 'Back', materia_tipo_pensums_path %>

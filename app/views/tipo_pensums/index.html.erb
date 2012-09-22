@@ -1,0 +1,27 @@
+<h1>Listing tipo_pensums</h1>
+
+<table>
+  <tr>
+    <th>Pensum</th>
+    <th>Descripcion</th>
+    <th>Cantidad</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_pensums.each do |tipo_pensum| %>
+  <tr>
+    <td><%= tipo_pensum.pensum %></td>
+    <td><%= tipo_pensum.descripcion %></td>
+    <td><%= tipo_pensum.cantidad %></td>
+    <td><%= link_to 'Show', tipo_pensum %></td>
+    <td><%= link_to 'Edit', edit_tipo_pensum_path(tipo_pensum) %></td>
+    <td><%= link_to 'Destroy', tipo_pensum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo pensum', new_tipo_pensum_path %>

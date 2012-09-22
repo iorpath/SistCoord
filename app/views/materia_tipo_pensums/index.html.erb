@@ -1,0 +1,25 @@
+<h1>Listing materia_tipo_pensums</h1>
+
+<table>
+  <tr>
+    <th>Materia</th>
+    <th>Tipopensum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @materia_tipo_pensums.each do |materia_tipo_pensum| %>
+  <tr>
+    <td><%= materia_tipo_pensum.materia %></td>
+    <td><%= materia_tipo_pensum.tipopensum %></td>
+    <td><%= link_to 'Show', materia_tipo_pensum %></td>
+    <td><%= link_to 'Edit', edit_materia_tipo_pensum_path(materia_tipo_pensum) %></td>
+    <td><%= link_to 'Destroy', materia_tipo_pensum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Materia tipo pensum', new_materia_tipo_pensum_path %>

@@ -1,4 +1,14 @@
 SistCoord::Application.routes.draw do
+  resources :homologacions
+
+  resources :pensums
+
+  resources :materia_tipo_pensums
+
+  resources :tipo_pensums
+
+  resources :materia
+
   authenticated :user do
     root :to => 'home#index'
   end
