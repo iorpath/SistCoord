@@ -1,0 +1,35 @@
+<h1>Listing estudiantes</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Foto</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th>Tipo estudiante</th>
+    <th>Documento</th>
+    <th>Tipo documento</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @estudiantes.each do |estudiante| %>
+  <tr>
+    <td><%= estudiante.user %></td>
+    <td><%= estudiante.foto %></td>
+    <td><%= estudiante.direccion %></td>
+    <td><%= estudiante.telefono %></td>
+    <td><%= estudiante.tipo_estudiante %></td>
+    <td><%= estudiante.documento %></td>
+    <td><%= estudiante.tipo_documento %></td>
+    <td><%= link_to 'Show', estudiante %></td>
+    <td><%= link_to 'Edit', edit_estudiante_path(estudiante) %></td>
+    <td><%= link_to 'Destroy', estudiante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Estudiante', new_estudiante_path %>

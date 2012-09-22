@@ -1,4 +1,6 @@
 SistCoord::Application.routes.draw do
+  resources :estudiantes
+
   authenticated :user do
     root :to => 'home#index'
   end
