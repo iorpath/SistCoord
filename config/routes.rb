@@ -1,8 +1,8 @@
 SistCoord::Application.routes.draw do
 
-  resources :homologacions
-
   resources :pensums
+
+  resources :homologacions
 
   resources :materia_tipo_pensums
 

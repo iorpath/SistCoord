@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922213301) do
+ActiveRecord::Schema.define(:version => 20120922213352) do
 
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(:version => 20120922213301) do
   add_index "homologacions", ["estudiante_id"], :name => "index_homologacions_on_estudiante_id"
   add_index "homologacions", ["materia_id"], :name => "index_homologacions_on_materia_id"
 
+  create_table "maestria", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "nombre"
+    t.string   "codigo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "maestria", ["user_id"], :name => "index_maestria_on_user_id"
+
   create_table "materia", :force => true do |t|
     t.string   "codigo"
     t.string   "nombre"
@@ -59,11 +69,12 @@ ActiveRecord::Schema.define(:version => 20120922213301) do
   add_index "materia_tipo_pensums", ["tipopensum_id"], :name => "index_materia_tipo_pensums_on_tipopensum_id"
 
   create_table "pensums", :force => true do |t|
+    t.date     "fechacreacion"
     t.string   "nombre"
-    t.date     "fecha_creacion"
+    t.boolean  "estado"
     t.integer  "maestria_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "pensums", ["maestria_id"], :name => "index_pensums_on_maestria_id"

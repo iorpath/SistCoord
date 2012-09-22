@@ -1,0 +1,27 @@
+<h1>Listing maestria</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Nombre</th>
+    <th>Codigo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @maestria.each do |maestrium| %>
+  <tr>
+    <td><%= maestrium.user %></td>
+    <td><%= maestrium.nombre %></td>
+    <td><%= maestrium.codigo %></td>
+    <td><%= link_to 'Show', maestrium %></td>
+    <td><%= link_to 'Edit', edit_maestrium_path(maestrium) %></td>
+    <td><%= link_to 'Destroy', maestrium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Maestrium', new_maestrium_path %>
