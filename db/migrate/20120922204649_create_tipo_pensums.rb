@@ -3,7 +3,7 @@ class CreateTipoPensums < ActiveRecord::Migration
     create_table :tipo_pensums do |t|
       t.references :pensum
       t.string :descripcion
-      t.int :cantidad
+      t.integer :cantidad
 
       t.timestamps
     end

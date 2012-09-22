@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922195645) do
+ActiveRecord::Schema.define(:version => 20120922213301) do
 
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +27,47 @@ ActiveRecord::Schema.define(:version => 20120922195645) do
 
   add_index "estudiantes", ["user_id"], :name => "index_estudiantes_on_user_id"
 
+  create_table "homologacions", :force => true do |t|
+    t.string   "materiaorigen"
+    t.integer  "materia_id"
+    t.boolean  "estado"
+    t.integer  "estudiante_id"
+    t.string   "observaciones"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "homologacions", ["estudiante_id"], :name => "index_homologacions_on_estudiante_id"
+  add_index "homologacions", ["materia_id"], :name => "index_homologacions_on_materia_id"
+
+  create_table "materia", :force => true do |t|
+    t.string   "codigo"
+    t.string   "nombre"
+    t.integer  "maestria_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "materia_tipo_pensums", :force => true do |t|
+    t.integer  "materia_id"
+    t.integer  "tipopensum_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "materia_tipo_pensums", ["materia_id"], :name => "index_materia_tipo_pensums_on_materia_id"
+  add_index "materia_tipo_pensums", ["tipopensum_id"], :name => "index_materia_tipo_pensums_on_tipopensum_id"
+
+  create_table "pensums", :force => true do |t|
+    t.string   "nombre"
+    t.date     "fecha_creacion"
+    t.integer  "maestria_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "pensums", ["maestria_id"], :name => "index_pensums_on_maestria_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -37,6 +78,16 @@ ActiveRecord::Schema.define(:version => 20120922195645) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "tipo_pensums", :force => true do |t|
+    t.integer  "pensum_id"
+    t.string   "descripcion"
+    t.integer  "cantidad"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tipo_pensums", ["pensum_id"], :name => "index_tipo_pensums_on_pensum_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
