@@ -41,10 +41,9 @@ class EstudiantesController < ApplicationController
   # POST /estudiantes.json
   def create
     @estudiante = Estudiante.new(params[:estudiante])
-
     respond_to do |format|
       if @estudiante.save
-        format.html { redirect_to @estudiante, notice: 'Estudiante was successfully created.' }
+        format.html { redirect_to @estudiante, notice: 'El estudiante ha sido creado exitosamente' }
         format.json { render json: @estudiante, status: :created, location: @estudiante }
       else
         format.html { render action: "new" }
@@ -60,7 +59,7 @@ class EstudiantesController < ApplicationController
 
     respond_to do |format|
       if @estudiante.update_attributes(params[:estudiante])
-        format.html { redirect_to @estudiante, notice: 'Estudiante was successfully updated.' }
+        format.html { redirect_to @estudiante, notice: 'La informacion del estudiante ha sido actualizada exitosamente' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

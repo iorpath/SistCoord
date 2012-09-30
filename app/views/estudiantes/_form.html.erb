@@ -1,7 +1,7 @@
 <%= form_for(@estudiante) do |f| %>
   <% if @estudiante.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@estudiante.errors.count, "error") %> prohibited this estudiante from being saved:</h2>
+      <h2><%= pluralize(@estudiante.errors.count, "error") %> errores impidieron que la informaci&oacute;n del estudiante fuera almacenada con &eacute;xito:</h2>
 
       <ul>
       <% @estudiante.errors.full_messages.each do |msg| %>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <p>Cuenta de usuario</label></p>
+    <%= f.select(:user_id, User.all.collect{|t|["#{t.name} - #{t.email}",t.id]}) %>
   </div>
   <div class="field">
     <%= f.label :foto %><br />
@@ -40,6 +40,6 @@
     <%= f.text_field :tipo_documento %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Crear estudiante' %>
   </div>
 <% end %>
