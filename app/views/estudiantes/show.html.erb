@@ -12,7 +12,9 @@
 
 <p>
   <b>Foto:</b>
-  <%= @estudiante.foto %>
+  <%if @estudiante.foto != nil && @estudiante.foto != '' then %>
+  <img src="<%= @estudiante.foto %>"/>
+  <%end%>
 </p>
 
 <p>
