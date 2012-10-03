@@ -33,30 +33,28 @@ def estudiante_create
 end
 
 def estudiante_edit
-  pending
+  #fill_in :user_id, :with => @estudiante[:user_id]
+  #fill_in "Foto", :with => @estudiante[:foto]
+  fill_in "Direccion", :with => 'Calle especial No. 34-11'
+  fill_in "Tipo estudiante", :with => 'Maestria y Doctorado'
+  fill_in "Documento", :with => 'AN3828273'
+  fill_in "Tipo documento", :with => 'P'
+  click_button "Crear/editar estudiante"
 end
 
-Given /^I entered to option "Estudiantes", and selected the "(.*?)" option over a student of interest$/ do |operacion|
+Given /^I entered to option "Estudiantes", and selected the "Editar" option over a student of interest$/ do
   visit '/estudiantes/'
-  if (operacion == "Ver informacion") then
-    
-  else if (operacion == "Editar") then
-    estudiante_create
-    @idUltimo = Estudiante.all.last.id
-    @irA = '/estudiantes/#{@idUltimo}/edit' 
-    #TODO QUEDE AQUI... VER COMO PASAR ESE ID FEO
-    visit @irA
-    estudiante_edit
-  end
+   estudiante_create
 end
 
 When /^I edit the information of the selected student$/ do
-  pending # express the regexp above with the code you wish you had
+    @irA = '/estudiantes/' + Estudiante.all.last.id.to_s + '/edit' 
+    visit @irA
+    estudiante_edit
 end
 
-Then /^I should see the updated information of student when the system returns to students list$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-
+Then /^I should see the updated information of student when the system returns to students list and I view the student information$/ do
+  @irA = '/estudiantes/' + Estudiante.all.last.id.to_s
+  visit @irA
+  page.should have_content 'AN3828273'
 end
