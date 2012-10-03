@@ -18,6 +18,8 @@ SistCoord::Application.routes.draw do
   resources :maestria
 
   resources :estudiantes
+  
+  resources :maestria
 
   authenticated :user do
     root :to => 'home#index'
