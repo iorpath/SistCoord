@@ -5,7 +5,7 @@ def user_create
     :password => "please", :password_confirmation => "please" }
  @user ||= User.first conditions: {:email => @visitor[:email]}
  @user.destroy unless @user.nil?
- @user = FactoryGirl.create(:user, email: @visitor[:email])
+ @user = FactoryGirl.create(:user, name: @visitor[:name], password: @visitor[:password] ,email: @visitor[:email])
 end
 
 def estudiante_init
@@ -23,7 +23,7 @@ end
 def estudiante_create
   estudiante_init
   visit '/estudiantes/new'
-  #fill_in :user_id, :with => @estudiante[:user_id]
+  select(@visitor[:name] + ' - ' + @visitor[:email], :from => :user_id) 
   #fill_in "Foto", :with => @estudiante[:foto]
   fill_in "Direccion", :with => @estudiante[:direccion]
   fill_in "Tipo estudiante", :with => @estudiante[:tipo_estudiante]
@@ -33,7 +33,7 @@ def estudiante_create
 end
 
 def estudiante_edit
-  #fill_in :user_id, :with => @estudiante[:user_id]
+  select(@visitor[:name] + ' - ' + @visitor[:email], :from => :user_id) 
   #fill_in "Foto", :with => @estudiante[:foto]
   fill_in "Direccion", :with => 'Calle especial No. 34-11'
   fill_in "Tipo estudiante", :with => 'Maestria y Doctorado'

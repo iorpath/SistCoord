@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <p>Cuenta de usuario</label></p>
+    <label for="estudiante_user_id">Cuenta de usuario</label>
     <%= f.select(:user_id, User.all.collect{|t|["#{t.name} - #{t.email}",t.id]}) %>
   </div>
   <div class="field">
