@@ -16,6 +16,8 @@ SistCoord::Application.routes.draw do
   resources :materia
 
   resources :estudiantes
+  
+  resources :maestria
 
 
   authenticated :user do
