@@ -1,29 +1,33 @@
-<h1>Listing seccions</h1>
+<h1>Listado de secciones</h1>
 
-<table>
-  <tr>
-    <th>Materia</th>
-    <th>Etiqueta</th>
-    <th>Profesor</th>
-    <th>Salon</th>
-    <th></th>
-    <th></th>
-    <th></th>
+<table width="80%">
+  <tr style="font-weight:bold">
+    <td>Materia</td>
+    <td>Descripciòn</td>
+    <td>Profesor</td>
+    <td>Salon</td>
+    <td width="60px"></td>
+    <td width="60px"></td>
+    <td width="60px"></td>
   </tr>
 
 <% @seccions.each do |seccion| %>
   <tr>
-    <td><%= seccion.materia %></td>
+  	<% if seccion.materium != nil then %>
+    <td><%= seccion.materium.nombre %></td>
+    <% else %>
+    <td></td>
+    <% end %>
     <td><%= seccion.etiqueta %></td>
     <td><%= seccion.profesor %></td>
     <td><%= seccion.salon %></td>
-    <td><%= link_to 'Show', seccion %></td>
-    <td><%= link_to 'Edit', edit_seccion_path(seccion) %></td>
-    <td><%= link_to 'Destroy', seccion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', seccion %></td>
+    <td><%= link_to 'Editar', edit_seccion_path(seccion) %></td>
+    <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Seccion', new_seccion_path %>
+<%= link_to 'Nueva seccion', new_seccion_path %>

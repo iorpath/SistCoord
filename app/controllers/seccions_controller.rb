@@ -3,7 +3,9 @@ class SeccionsController < ApplicationController
   # GET /seccions.json
   def index
     @seccions = Seccion.all
-
+    @seccions.each do |seccion|
+      seccion.materium = Materium.find(seccion.materia_id)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @seccions }
@@ -14,7 +16,7 @@ class SeccionsController < ApplicationController
   # GET /seccions/1.json
   def show
     @seccion = Seccion.find(params[:id])
-
+    @seccion.materium = Materium.find(@seccion.materia_id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @seccion }
@@ -25,7 +27,6 @@ class SeccionsController < ApplicationController
   # GET /seccions/new.json
   def new
     @seccion = Seccion.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @seccion }
@@ -44,7 +45,7 @@ class SeccionsController < ApplicationController
 
     respond_to do |format|
       if @seccion.save
-        format.html { redirect_to @seccion, notice: 'Seccion was successfully created.' }
+        format.html { redirect_to @seccion, notice: 'Seccion creada exitosamente.' }
         format.json { render json: @seccion, status: :created, location: @seccion }
       else
         format.html { render action: "new" }
@@ -60,7 +61,7 @@ class SeccionsController < ApplicationController
 
     respond_to do |format|
       if @seccion.update_attributes(params[:seccion])
-        format.html { redirect_to @seccion, notice: 'Seccion was successfully updated.' }
+        format.html { redirect_to @seccion, notice: 'Seccion actualizada correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,6 +1,6 @@
-<h1>Listing horarios</h1>
+<h1>Listado de horarios</h1>
 
-<table>
+<table width="100%">
   <tr>
     <th>Seccion</th>
     <th>Dia</th>
@@ -17,13 +17,13 @@
     <td><%= horario.dia %></td>
     <td><%= horario.hora_inicio %></td>
     <td><%= horario.hora_fin %></td>
-    <td><%= link_to 'Show', horario %></td>
-    <td><%= link_to 'Edit', edit_horario_path(horario) %></td>
-    <td><%= link_to 'Destroy', horario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', horario %></td>
+    <td><%= link_to 'Editar', edit_horario_path(horario) %></td>
+    <td><%= link_to 'Eliminar', horario, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Horario', new_horario_path %>
+<%= link_to 'Nuevo Horario', new_horario_path %>

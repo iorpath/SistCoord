@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :materia %><br />
-    <%= f.text_field :materia %>
+    Materia<br />
+    <%= f.select(:materia_id, Materium.all.collect{|t|["#{t.codigo} - #{t.nombre}",t.id]}) %>
   </div>
   <div class="field">
-    <%= f.label :etiqueta %><br />
+    Descripciòn<br />
     <%= f.text_field :etiqueta %>
   </div>
   <div class="field">
@@ -28,6 +28,6 @@
     <%= f.text_field :salon %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Enviar cambios'%>
   </div>
 <% end %>

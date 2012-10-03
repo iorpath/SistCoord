@@ -2,11 +2,11 @@
 
 <p>
   <b>Materia:</b>
-  <%= @seccion.materia %>
+  <%= @seccion.materium.nombre %>
 </p>
 
 <p>
-  <b>Etiqueta:</b>
+  <b>Descripciòn:</b>
   <%= @seccion.etiqueta %>
 </p>
 
@@ -21,5 +21,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_seccion_path(@seccion) %> |
-<%= link_to 'Back', seccions_path %>
+<%= link_to 'Editar', edit_seccion_path(@seccion) %> |
+<%= link_to 'Regresar', seccions_path %>
