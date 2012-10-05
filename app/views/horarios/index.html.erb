@@ -1,19 +1,19 @@
 <h1>Listado de horarios</h1>
 
-<table width="100%">
-  <tr>
-    <th>Seccion</th>
-    <th>Dia</th>
-    <th>Hora inicio</th>
-    <th>Hora fin</th>
-    <th></th>
-    <th></th>
-    <th></th>
+<table width="80%">
+  <trstyle="font-weight:bold">
+    <td>Seccion</td>
+    <td>Dia</td>
+    <td>Hora inicio</td>
+    <td>Hora fin</td>
+    <td></td>
+    <td></td>
+    <td></td>
   </tr>
 
 <% @horarios.each do |horario| %>
   <tr>
-    <td><%= horario.seccion %></td>
+    <td><%= horario.seccion.etiqueta %></td>
     <td><%= horario.dia %></td>
     <td><%= horario.hora_inicio %></td>
     <td><%= horario.hora_fin %></td>

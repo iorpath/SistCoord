@@ -13,11 +13,11 @@
 
   <div class="field">
     <%= f.label :seccion %><br />
-    <%= f.text_field :seccion %>
+    <%= f.select(:seccion_id, Seccion.all.collect{|t|["#{t.etiqueta}",t.id]}) %>
   </div>
   <div class="field">
     <%= f.label :dia %><br />
-    <%= f.text_field :dia %>
+    <%= f.select(:dia, options_for_select({ "Lunes" => "Lunes", "Martes" => "Martes", "Miercoles" => "Miercoles", "Jueves" => "Jueves", "Viernes"  => "Viernes", "Sabado"  => "Sabado"}, "Lun")) %>
   </div>
   <div class="field">
     <%= f.label :hora_inicio %><br />
