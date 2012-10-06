@@ -1,7 +1,7 @@
 <%= form_for(@maestrium) do |f| %>
   <% if @maestrium.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@maestrium.errors.count, "error") %> prohibited this maestrium from being saved:</h2>
+      <h2><%= pluralize(@maestrium.errors.count, "error") %> errores impidieron que la informaci&oacute;n de la maestria fuera almacenada con &eacute;xito:</h2>
 
       <ul>
       <% @maestrium.errors.full_messages.each do |msg| %>
@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
   </div>
   <div class="field">
     <%= f.label :nombre %><br />
     <%= f.text_field :nombre %>
   </div>
   <div class="field">
-    <%= f.label :codigo %><br />
-    <%= f.text_field :codigo %>
+    <label for="maestrium_user_id">Cuenta de usuario coordinador</label>
+    <%= f.select(:user_id, User.all.collect{|t|["#{t.name} - #{t.email}",t.id]}) %>
   </div>
   <div class="actions">
     <%= f.submit %>
