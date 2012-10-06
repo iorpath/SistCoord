@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :materium do
     codigo "MyString"
     nombre "MyString"
-    maestria ""
+    maestrium ""
   end
 end
