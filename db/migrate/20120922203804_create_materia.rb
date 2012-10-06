@@ -3,7 +3,7 @@ class CreateMateria < ActiveRecord::Migration
     create_table :materia do |t|
       t.string :codigo
       t.string :nombre
-      t.references :maestria
+      t.references :maestrium
 
       t.timestamps
     end

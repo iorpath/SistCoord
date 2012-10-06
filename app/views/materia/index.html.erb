@@ -1,27 +1,30 @@
-<h1>Listing materia</h1>
+<h1>Materias</h1>
 
 <table>
   <tr>
-    <th>Codigo</th>
-    <th>Nombre</th>
-    <th>Maestria</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>C&oacute;digo Materia</th>
+    <th>Nombre Materia</th>
+    <th>C&oacute;digo Maestria</th>
+    <th>Nombre Maestria</th>
+    <th>Acciones</th>
   </tr>
 
 <% @materia.each do |materium| %>
   <tr>
     <td><%= materium.codigo %></td>
     <td><%= materium.nombre %></td>
-    <td><%= materium.maestria %></td>
-    <td><%= link_to 'Show', materium %></td>
-    <td><%= link_to 'Edit', edit_materium_path(materium) %></td>
-    <td><%= link_to 'Destroy', materium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if materium.maestrium != nil then %>
+    <td><%= materium.maestrium.codigo %></td>
+    <td><%= materium.maestrium.nombre %></td>
+    <% else %>
+    <td></td>
+    <td></td>
+    <% end %>
+    <td><%= link_to 'Ver información', materium %> | <%= link_to 'Editar', edit_materium_path(materium) %> | <%= link_to 'Eliminar', materium, method: :delete, data: { confirm: 'Está seguro de realizar la eliminacion?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Materium', new_materium_path %>
+<%= link_to 'Nueva materia', new_materium_path %>

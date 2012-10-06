@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>User:</b>
-  <%= @maestrium.user %>
+  <b>Codigo:</b>
+  <%= @maestrium.codigo %>
 </p>
 
 <p>
@@ -11,10 +11,18 @@
 </p>
 
 <p>
-  <b>Codigo:</b>
-  <%= @maestrium.codigo %>
+  <b>Coordinador:</b>
+  <% if @maestrium.user != nil then %>
+  <%= @maestrium.user.name %>
+  <% end %>
 </p>
 
+<p>
+  <b>E-mail del coordinador</b>
+  <%if @maestrium.user != nil then %>
+  <%= @maestrium.user.email %>
+  <% end %>
+</p>
 
-<%= link_to 'Edit', edit_maestrium_path(@maestrium) %> |
-<%= link_to 'Back', maestria_path %>
+<%= link_to 'Editar', edit_maestrium_path(@maestrium) %> |
+<%= link_to 'Volver', maestria_path %>

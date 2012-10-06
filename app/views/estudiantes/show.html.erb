@@ -2,7 +2,9 @@
 
 <p>
 	<b>Nombres</b>
+	<% if @estudiante.user != nil then %>
 	<%= @estudiante.user.name %>
+	<% end %>
 </p>
 
 <p>
