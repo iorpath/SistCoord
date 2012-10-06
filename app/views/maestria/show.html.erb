@@ -12,12 +12,16 @@
 
 <p>
   <b>Coordinador:</b>
+  <% if @maestrium.user != nil then %>
   <%= @maestrium.user.name %>
+  <% end %>
 </p>
 
 <p>
   <b>E-mail del coordinador</b>
+  <%if @maestrium.user != nil then %>
   <%= @maestrium.user.email %>
+  <% end %>
 </p>
 
 <%= link_to 'Editar', edit_maestrium_path(@maestrium) %> |

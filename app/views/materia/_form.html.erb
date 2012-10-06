@@ -1,7 +1,7 @@
 <%= form_for(@materium) do |f| %>
   <% if @materium.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@materium.errors.count, "error") %> prohibited this materium from being saved:</h2>
+      <h2><%= pluralize(@materium.errors.count, "error") %> errores impidieron que la informaci&oacute;n de la materia fuera almacenada con &eacute;xito:</h2>
 
       <ul>
       <% @materium.errors.full_messages.each do |msg| %>
@@ -20,10 +20,10 @@
     <%= f.text_field :nombre %>
   </div>
   <div class="field">
-    <%= f.label :maestria %><br />
-    <%= f.text_field :maestria %>
+    <label for="materium_maestrium_id">Maestr&iacute;a</label>
+    <%= f.select(:maestrium_id, Maestrium.all.collect{|t|["#{t.codigo} - #{t.nombre}",t.id]}) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Crear/editar materia' %>
   </div>
 <% end %>
