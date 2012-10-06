@@ -20,10 +20,10 @@
     <%= f.text_field :nombre %>
   </div>
   <div class="field">
-    <label for="maestrium_user_id">Cuenta de usuario coordinador</label>
+    <label for="maestrium_user_id">Coordinador</label>
     <%= f.select(:user_id, User.all.collect{|t|["#{t.name} - #{t.email}",t.id]}) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Crear/editar maestría' %>
   </div>
 <% end %>
