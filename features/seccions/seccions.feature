@@ -4,8 +4,8 @@
  	so I can manage the seccions of every materium and select the best fit to assign students to courses 
   
   
-   Scenario: I sign in, enter to option "Secciones", enter to option "Crear seccion para materia", and I create the seccion 
-      Given I entered to option "Secciones", and selected the "Crear seccion para materia" option
+   Scenario: I sign in, enter to option "Secciones", enter to option "Nueva seccion", and I create the seccion 
+      Given I entered to option "Secciones", and selected the "Nueva seccion" option
       When I add the information of the new seccion
       Then I should see the information of seccion when the system returns to seccions list
       

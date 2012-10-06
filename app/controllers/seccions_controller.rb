@@ -4,7 +4,7 @@ class SeccionsController < ApplicationController
   def index
     @seccions = Seccion.all
     @seccions.each do |seccion|
-      seccion.materium = Materium.find(seccion.materia_id)
+      seccion.materium = Materium.find(seccion.materium_id)
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class SeccionsController < ApplicationController
   # GET /seccions/1.json
   def show
     @seccion = Seccion.find(params[:id])
-    @seccion.materium = Materium.find(@seccion.materia_id)
+    @seccion.materium = Materium.find(@seccion.materium_id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @seccion }

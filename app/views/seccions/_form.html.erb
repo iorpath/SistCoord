@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <label for="seccion_materia_id">Materia</label><br />
-    <%= f.select(:materia_id, Materium.all.collect{|t|["#{t.codigo} - #{t.nombre}",t.id]}) %>
+    <label for="seccion_materium_id">Materia</label><br />
+    <%= f.select(:materium_id, Materium.all.collect{|t|["#{t.codigo} - #{t.nombre}",t.id]}) %>
   </div>
   <div class="field">
     <label for="seccion_etiqueta">Descripcion</label><br />

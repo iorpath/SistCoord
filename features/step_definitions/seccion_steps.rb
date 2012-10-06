@@ -1,16 +1,15 @@
 require 'rspec/expectations' 
 
 def materium_create
- @create_mate ||= { :codigo => "ISIS-401", :nombre => "Procesos agiles de desarrollo", :maestria_id => 1 }
+ @create_mate ||= { :codigo => "ISIS-401", :nombre => "Procesos agiles de desarrollo", :maestrium_id => 1 }
  @materia ||= Materium.first conditions: {:codigo => @create_mate[:codigo]}
  @materia.destroy unless @materia.nil?
- @materia = FactoryGirl.create(:materium, codigo: @create_mate[:codigo], nombre: @create_mate[:nombre], maestria_id: @create_mate[:maestria_id])
+ @materia = FactoryGirl.create(:materium, codigo: @create_mate[:codigo], nombre: @create_mate[:nombre], maestrium_id: @create_mate[:maestrium_id])
 end
 
 
 def seccion_init
   @seccion = Seccion.new
-  
   @seccion.etiqueta = 'Seccion 1 - Procesos Agiles'
   @seccion.profesor = 'Dario Correal'
   @seccion.salon = 'ML-503' 
@@ -21,7 +20,7 @@ end
 def seccion_create
   seccion_init
   visit '/seccions/new'
-  select(@create_mate[:codigo] + ' - ' + @create_mate[:nombre], :from => :materia_id) 
+  select(@create_mate[:codigo] + ' - ' + @create_mate[:nombre], :from => :materium_id) 
   fill_in "Descripcion", :with => @seccion[:etiqueta]
   fill_in "Profesor", :with => @seccion[:profesor]
   fill_in "Salon", :with => @seccion[:salon]
@@ -41,7 +40,7 @@ end
 def seccion_create_2
   seccion_init_2
   visit '/seccions/new'
-  select(@create_mate[:codigo] + ' - ' + @create_mate[:nombre], :from => :materia_id)
+  select(@create_mate[:codigo] + ' - ' + @create_mate[:nombre], :from => :materium_id)
   fill_in "Descripcion", :with => @seccion[:etiqueta]
   fill_in "Profesor", :with => @seccion[:profesor]
   fill_in "Salon", :with => @seccion[:salon]
@@ -49,7 +48,7 @@ def seccion_create_2
 end
 
 def seccion_edit
-  select(@create_mate[:codigo] + ' - ' + @create_mate[:nombre], :from => :materia_id)
+  select(@create_mate[:codigo] + ' - ' + @create_mate[:nombre], :from => :materium_id)
   fill_in "Descripcion", :with => 'Seccion 2 - Procesos Agiles'
   fill_in "Profesor", :with => 'Jose Abasolo'
   fill_in "Salon", :with => 'ML-202'
@@ -61,7 +60,7 @@ end
 =begin
  El siguiente es la prueba para crear una seccion asociada a una materia 
 =end
-Given /^I entered to option "Secciones", and selected the "Crear seccion" option$/ do
+Given /^I entered to option "Secciones", and selected the "Nueva seccion" option$/ do
   visit '/seccions/'
   visit '/seccions/new'
 end
@@ -70,7 +69,7 @@ When /^I add the information of the new seccion$/ do
     seccion_create
 end
 
-Then /^I should see the information of seccion when the system returns to seccion list$/ do
+Then /^I should see the information of seccion when the system returns to seccions list$/ do
   visit '/seccions/'
   page.should have_content 'Seccion 1 - Procesos Agiles'
 end

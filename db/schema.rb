@@ -102,15 +102,15 @@ ActiveRecord::Schema.define(:version => 20120922231842) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "seccions", :force => true do |t|
-    t.integer  "materia_id"
+    t.integer  "materium_id"
     t.string   "etiqueta"
     t.string   "profesor"
     t.string   "salon"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "seccions", ["materia_id"], :name => "index_seccions_on_materia_id"
+  add_index "seccions", ["materium_id"], :name => "index_seccions_on_materium_id"
 
   create_table "tipo_pensums", :force => true do |t|
     t.integer  "pensum_id"
