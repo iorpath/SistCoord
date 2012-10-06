@@ -70,14 +70,14 @@ ActiveRecord::Schema.define(:version => 20120922231842) do
   end
 
   create_table "materia_tipo_pensums", :force => true do |t|
-    t.integer  "materia_id"
-    t.integer  "tipopensum_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "materium_id"
+    t.integer  "tipo_pensum_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
-  add_index "materia_tipo_pensums", ["materia_id"], :name => "index_materia_tipo_pensums_on_materia_id"
-  add_index "materia_tipo_pensums", ["tipopensum_id"], :name => "index_materia_tipo_pensums_on_tipopensum_id"
+  add_index "materia_tipo_pensums", ["materium_id"], :name => "index_materia_tipo_pensums_on_materium_id"
+  add_index "materia_tipo_pensums", ["tipo_pensum_id"], :name => "index_materia_tipo_pensums_on_tipo_pensum_id"
 
   create_table "pensums", :force => true do |t|
     t.date     "fechacreacion"
