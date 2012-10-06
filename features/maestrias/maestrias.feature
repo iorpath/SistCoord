@@ -3,7 +3,7 @@ Feature: Administer Master Programs
  I want to administer the associated information of master programs
  so I have the master programs information always up-to-date 
  
-   Scenario: I sign in, enter to option "Estudiantes", enter to option "Crear estudiante", and I create the student 
+   Scenario: I sign in, enter to option "Maestrias", enter to option "Crear ", and I create the student 
       Given I entered to option "Estudiantes", and selected the "Crear estudiante" option
       When I add the information of the new student
       Then I should see the information of student when the system returns to students list
