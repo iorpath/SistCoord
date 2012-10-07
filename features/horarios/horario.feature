@@ -4,10 +4,10 @@
  	so I can define the schedule of every seccion and so, make better choice of students enrolled at materium 
   
   
-   Scenario: I sign in, enter to option "Horarios", enter to option "Crear horario para seccion", and I create the schedule 
-      Given I entered to option "Horarios", and selected the "Crear horario para seccion" option
+   Scenario: I sign in, enter to option "Horarios", enter to option "Nuevo Horario", and I create the schedule 
+      Given I entered to option "Horarios", and selected the "Nuevo Horario" option
       When I add the information of the new schedule
-      Then I should see the information of schedule when the system returns to schedule list
+      Then I should see the information of schedule when the system returns to schedules list
       
    Scenario: I sign in, enter to option "Horarios", and edit an schedule information 
       Given I entered to option "Horarios", and selected the "Editar" option over a schedule of interest

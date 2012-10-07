@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :seccion %><br />
+  	<%= f.label :seccion %><br />
     <%= f.select(:seccion_id, Seccion.all.collect{|t|["#{t.etiqueta}",t.id]}) %>
   </div>
   <div class="field">
