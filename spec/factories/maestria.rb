@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :maestrium do
-    user nil
     nombre "MyString"
     codigo "MyString"
   end

@@ -10,8 +10,8 @@ end
 
 def maestria_init
   @maestria = Maestrium.new
-  @maestria.codigo = 'MISI-4000'
-  @maestria.nombre = 'Tutorial especial I'
+  @maestria.codigo = 'MISI'
+  @maestria.nombre = 'Maestria en TI'
   user_create
   @maestria.user = @user   
 end
@@ -26,8 +26,8 @@ end
 
 def maestria_init_2
   @maestria = Maestrium.new
-  @maestria.codigo = 'MISI-4001'
-  @maestria.nombre = 'Tesis I'
+  @maestria.codigo = 'MISIS'
+  @maestria.nombre = 'Maestria en Ingenieria de Sistemas'
   user_create_2
   @maestria.user = @user   
 end
@@ -51,8 +51,8 @@ def maestria_create
 end
 
 def maestria_edit
-  fill_in "Codigo", :with => 'MISI-4001A'
-  fill_in "Nombre", :with => 'Tesis I Con Honores'
+  fill_in "Codigo", :with => 'MATI'
+  fill_in "Nombre", :with => 'Maestria en Tecnologias'
   select(@visitor[:name] + ' - ' + @visitor[:email], :from => :user_id)
   click_button "Crear/editar maestria"
 end
@@ -68,7 +68,7 @@ end
 
 Then /^I should see the information of master program when the system returns to master programs list$/ do
   visit '/maestria/'
-  page.should have_content 'MISI-4000'
+  page.should have_content 'MISI'
 end
 
 Given /^I entered to option "Maestrias", and selected the "Editar" option over a master program of interest$/ do
@@ -84,7 +84,7 @@ end
 
 Then /^I should see the updated information of master program when the system returns to master programs list and I view the master program information$/ do
   visit '/maestria/'
-  page.should have_content 'MISI-4001A'
+  page.should have_content 'MATI'
 end
 
 Given /^I entered to option "Maestrias", and selected the "Eliminar" option over a master program of interest$/ do
@@ -98,5 +98,5 @@ end
 
 Then /^I should not see the information of deleted master program when the system returns to master programs list$/ do
   visit '/maestria/'
-  page.should_not have_content 'MISI-4001A'
+  page.should_not have_content 'MISIS'
 end
