@@ -37,7 +37,7 @@ def user_create_2
     :password => "please", :password_confirmation => "please" }
  @user ||= User.first conditions: {:email => @visitor[:email]}
  @user.destroy unless @user.nil?
- @user = FactoryGirl.create(:user, name: @visitor[:name], password: @visitor[:password] ,email: @visitor[:email])
+ @user = FactoryGirl.create(:user, name: @visitor[:name], password: @visitor[:password] , password_confirmation: @visitor[:password_confirmation], email: @visitor[:email])
 end
 
 def estudiante_init_2
