@@ -1,9 +1,9 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :materium do
-    codigo "MyString"
-    nombre "MyString"
-    maestrium nil
+  factory :estudiante_pensum do
+    estudiante nil
+    pensum nil
+    estado "MyString"
   end
 end

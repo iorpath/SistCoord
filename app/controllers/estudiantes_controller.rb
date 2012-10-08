@@ -79,4 +79,35 @@ class EstudiantesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def maestrias
+    @estudiante = User.find(params[:id]).estudiante
+    if @estudiante.nil?
+      @estudiante = Estudiante.find params[:id]
+    end
+    @maestrias_estudiante = @estudiante.pensums
+  end
+  
+  def maestria
+    @estudiante = Estudiante.find params[:id]
+    @pensum = Pensum.find params[:id_pensum]
+    @maestria = @pensum.maestrium
+    
+    @materias_por_semestre = []    
+    8.times do |n|
+    @materias_por_semestre <<  @pensum.materias_semestre_sugerido(n)
+    end
+    @materias_primero = @pensum.materias_semestre_sugerido 1
+    @materias_segundo = @pensum.materias_semestre_sugerido 2
+    @materias_tercero = @pensum.materias_semestre_sugerido 3
+    @materias_cuarto = @pensum.materias_semestre_sugerido 4
+    @materias_quinto = @pensum.materias_semestre_sugerido 5
+    @materias_sexto = @pensum.materias_semestre_sugerido 6
+    @materias_septimo = @pensum.materias_semestre_sugerido 7
+    @materias_octavo = @pensum.materias_semestre_sugerido 8
+  end
+  
+  def menu
+     @estudiante = Estudiante.find params[:id]
+  end
 end

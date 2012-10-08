@@ -1,0 +1,59 @@
+<div class="page-header">
+	<h1>Informacion <%= @maestria.nombre%> </h1>
+	<h1><small> Pensum Vigente </small></h1>
+</div>
+<div>
+	<p>
+		<strong> Codigo: </strong>
+		<%= @maestria.codigo%>
+	</p>
+
+	<p>
+		<strong> Estado: </strong>
+		<% if @pensum.estado%>
+		Finalizado
+		<%else%>
+		Pendiente
+		<%end%>
+	</p>
+
+	<p>
+		<strong> Fecha de Creacion: </strong>
+		<%= @pensum.fechacreacion%>
+	</p>
+</div>
+<div style="padding-top: 30px">
+	<h2>Materias</h2>
+	<h2> <small> Plan de estudios sugerido </small></h2>
+	<%@materias_por_semestre.each_with_index do |materias, index|%>
+	<div>
+		<h3> Semestre <%= index+1%> </h3>
+		<p>
+			<table class="table table-striped">
+				<tr>
+					<th>Nombre</th>
+					<th>Codigo</th>
+					<th>Estado</th>
+					<th>Periodo</th>
+				</tr>
+
+				<% materias.each do |materia| %>
+				<tr>
+					<td><%= materia.nombre %></td>
+					<td><%= materia.codigo %></td>
+					<%if @estudiante.is_materia_aprobada?(materia)%>
+					<td>Aprobado</td>
+					<td>2008-2</td>
+					<%else%>
+					<td>Pendiente</td>
+					<td>No Aplica </td>
+					<%end%>
+				</tr>
+				<% end %>
+			</table>
+		</p>
+	</div>
+	<%end%>
+
+</div>
+

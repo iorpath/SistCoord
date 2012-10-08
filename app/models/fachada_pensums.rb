@@ -3,22 +3,22 @@ class FachadaPensums
      #Se obtiene el estudiante
      @estudiante = Estudiante.find(idEstudiante)
      #Se obtienen las maestrias
-     @estudiantemaestrias = @estudiante.estudiantemaestrias
-     @estudiantematerias = @estudiante.estudiantematerias
+     @estudiantepensums = @estudiante.estudiantepensums
+     @estudiantematerias = @estudiante.estudiantemateria
      
      @materiasVistas = {}
-     @estudiantemaestrias.each do |estm|
-       if (estm.maestria.id == idMaestria) then
+     @estudiantepensums.each do |estm|
+       if (estm.maestrium.id == idMaestria) then
          #Se obtiene el pensum de la maestria
          @pensum = estm.pensum
          @pensum.tipo_pensums.each do |tipoPensum|
            @materiasTipo =  {}
            @i=0
-           @materiasPensum = tipoPensum.materias
+           @materiasPensum = tipoPensum.materia
            @materiasPensum.each do |materiaPensum|
             @estudiantematerias.each do |estudianteMateria|  
-              if (estudianteMateria.materia.id == materiaPensum.id and
-                estudianteMateria.estado == 'Aprobada') then
+              if (estudianteMateria.materium.id == materiaPensum.id and
+                estudianteMateria.estado == 'Vista') then
                 @materiasTipo[@i] = materiaPensum 
                 @i = @i + 1
               end 
