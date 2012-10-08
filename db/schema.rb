@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922231842) do
+ActiveRecord::Schema.define(:version => 20121008164044) do
 
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
@@ -51,6 +51,31 @@ ActiveRecord::Schema.define(:version => 20120922231842) do
 
   add_index "horarios", ["seccion_id"], :name => "index_horarios_on_seccion_id"
 
+  create_table "inscripcion_maestria", :force => true do |t|
+    t.integer  "estudiante_id"
+    t.integer  "maestrium_id"
+    t.string   "estado"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "inscripcion_maestria", ["estudiante_id"], :name => "index_inscripcion_maestria_on_estudiante_id"
+  add_index "inscripcion_maestria", ["maestrium_id"], :name => "index_inscripcion_maestria_on_maestrium_id"
+
+  create_table "inscripcion_materia", :force => true do |t|
+    t.integer  "estudiante_id"
+    t.integer  "materium_id"
+    t.integer  "seccion_id"
+    t.string   "estado"
+    t.string   "periodo"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "inscripcion_materia", ["estudiante_id"], :name => "index_inscripcion_materia_on_estudiante_id"
+  add_index "inscripcion_materia", ["materium_id"], :name => "index_inscripcion_materia_on_materium_id"
+  add_index "inscripcion_materia", ["seccion_id"], :name => "index_inscripcion_materia_on_seccion_id"
+
   create_table "maestria", :force => true do |t|
     t.integer  "user_id"
     t.string   "nombre"
@@ -68,6 +93,19 @@ ActiveRecord::Schema.define(:version => 20120922231842) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  create_table "materia_pensums", :force => true do |t|
+    t.integer  "pensum_id"
+    t.integer  "materium_id"
+    t.text     "descripcion"
+    t.integer  "cantidad"
+    t.integer  "semestre_sugerido"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "materia_pensums", ["materium_id"], :name => "index_materia_pensums_on_materium_id"
+  add_index "materia_pensums", ["pensum_id"], :name => "index_materia_pensums_on_pensum_id"
 
   create_table "materia_tipo_pensums", :force => true do |t|
     t.integer  "materium_id"

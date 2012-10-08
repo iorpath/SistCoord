@@ -79,4 +79,20 @@ class EstudiantesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def maestrias
+    @estudiante = Estudiante.find params[:id]
+    @maestrias_estudiante = Estudiante.maestria
+  end
+  
+  def maestria
+    @estudiante = Estudiante.find params[:id]
+    @maestria = Maestrium.find params[:maestria_id]
+    @pensum = @maestria.pensum_actual
+    @materias = @pensum.materia
+  end
+  
+  def menu
+     @estudiante = Estudiante.find params[:id]
+  end
 end

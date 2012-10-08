@@ -17,7 +17,11 @@ SistCoord::Application.routes.draw do
   
   resources :maestria
 
-  resources :estudiantes
+  resources :estudiantes do
+    member do
+      get 'menu'
+    end
+  end
   
   resources :maestria
 
@@ -27,4 +31,10 @@ SistCoord::Application.routes.draw do
   root :to => 'home#index'
   devise_for :users
   resources :users, :only => [:show, :index]
+  
+  #Las maestrias isncritas por el estudiante
+  match 'estudiantes/:id/maestrias' => 'estudiante#maestrias', :as => :estudiante_maestrias
+  
+  #Informacion de la maestria de acuerdo al estudiante
+  match 'estudiantes/:id/maestria/:id_maestrium' => 'estudiante#maestria', :as => :estudiante_maestria
 end
