@@ -5,12 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-#puts 'SETTING UP DEFAULT USER LOGIN'
-#user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
-#puts 'New user created: ' << user.name
-#user2 = User.create! :name => 'Second User', :email => 'user2@example.com', :password => 'please', :password_confirmation => 'please'
-#puts 'New user created: ' << user2.name
-#user.add_role :admin
+puts 'SETTING UP DEFAULT USER LOGIN'
+user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
+puts 'New user created: ' << user.name
+user2 = User.create! :name => 'Second User', :email => 'user2@example.com', :password => 'please', :password_confirmation => 'please'
+puts 'New user created: ' << user2.name
+user.add_role :admin
 
 if User.find_by_name("Felipe Test").nil?
   user = FactoryGirl.create :user, :name =>"Felipe Test", :email =>"gf.moyano131@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'

@@ -13,9 +13,6 @@
     <li>
     <%= link_to 'Editar Cuenta', edit_user_registration_path %>
     </li>
-    <li>
-    <%= link_to 'Mis Maestrias', estudiante_maestrias_path(current_user) %>
-    </li>
     
     <% if current_user.has_role? :admin %>
       <li class="dropdown">  
@@ -43,7 +40,8 @@
 	    </a>  
 	    <ul class="dropdown-menu"> 
 	    	<li><a href="#">Carpeta del Estudiante</a></li> 
-	  		<li><a href="#">Homologaciones y Transferencias</a></li>  
+	  		<li><a href="#">Homologaciones y Transferencias</a></li>
+	  		<li><%= link_to 'Mis Maestrias', estudiante_maestrias_path(current_user) %> </li> 
 	    </ul>  
   	  </li> 
     <% end %>
