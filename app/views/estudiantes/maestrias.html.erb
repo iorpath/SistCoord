@@ -1,0 +1,26 @@
+<h1>Mis Maestrias</h1>
+
+<table class="table table-bordered">
+  <tr>
+  	<th>Nombre</th>
+    <th>Estado </th>
+    <th>Fecha de Inscripcion</th>  
+    <th>Detalles</th>
+  </tr>
+<% if not @maestrias_estudiante.empty?%>
+	<% @maestrias_estudiante.each do |pensum| %>
+	  <tr>
+	    <td><%= pensum.maestrium.nombre %></td>
+	    <td><%= pensum.estado %></td>
+	    <td><%= pensum.created_at %></td>
+	    <td><%= link_to 'Ver', estudiante_maestria_path(@estudiante,pensum) %></td>
+	  </tr>
+	<% end %>
+<% else %>
+	  <tr>
+	    <td>No hay maestrias inscritas</td>
+	  </tr>
+<% end %>
+</table>
+
+<br />

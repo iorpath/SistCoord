@@ -1,6 +1,6 @@
 <h1>Estudiantes</h1>
 
-<table>
+<table class="table table-bordered">
   <tr>
   	<th>Nombres</th>
     <th>Cuenta de usuario</th>
@@ -26,7 +26,9 @@
     <td><%= estudiante.tipo_estudiante %></td>
     <td><%= estudiante.tipo_documento %></td>
     <td><%= estudiante.documento %></td>
-    <td><%= link_to 'Ver información', estudiante %> | <%= link_to 'Editar', edit_estudiante_path(estudiante) %> | <%= link_to 'Eliminar', estudiante, method: :delete, data: { confirm: 'Esta seguro de realizar la eliminacion?' } %></td>
+    <td><%= link_to 'Ver información', estudiante %></td>
+   	<td> <%= link_to 'Editar', edit_estudiante_path(estudiante) %> </td>
+   	<td> <%= link_to 'Eliminar', estudiante, method: :delete, data: { confirm: 'Esta seguro de realizar la eliminacion?' } %></td>
   </tr>
 <% end %>
 </table>

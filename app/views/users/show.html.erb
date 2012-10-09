@@ -2,4 +2,6 @@
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 
-<%= link_to 'Menu estudiante', menu_estudiante_path %>
+<%if not @user.estudiante.nil?%>
+<%= link_to 'Menu estudiante', menu_estudiante_path(@user.estudiante) %>
+<% end %>

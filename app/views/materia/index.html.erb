@@ -1,6 +1,6 @@
 <h1>Materias</h1>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>C&oacute;digo Materia</th>
     <th>Nombre Materia</th>
@@ -20,7 +20,9 @@
     <td></td>
     <td></td>
     <% end %>
-    <td><%= link_to 'Ver información', materium %> | <%= link_to 'Editar', edit_materium_path(materium) %> | <%= link_to 'Eliminar', materium, method: :delete, data: { confirm: 'Está seguro de realizar la eliminacion?' } %></td>
+    <td><%= link_to 'Ver información', materium %></td>
+    <td><%= link_to 'Editar', edit_materium_path(materium) %></td> 
+    <td> <%= link_to 'Eliminar', materium, method: :delete, data: { confirm: 'Está seguro de realizar la eliminacion?' } %></td>
   </tr>
 <% end %>
 </table>

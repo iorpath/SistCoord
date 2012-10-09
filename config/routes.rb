@@ -33,8 +33,8 @@ SistCoord::Application.routes.draw do
   resources :users, :only => [:show, :index]
   
   #Las maestrias isncritas por el estudiante
-  match 'estudiantes/:id/maestrias' => 'estudiante#maestrias', :as => :estudiante_maestrias
+  match 'estudiantes/:id/maestrias' => 'estudiantes#maestrias', :as => :estudiante_maestrias
   
   #Informacion de la maestria de acuerdo al estudiante
-  match 'estudiantes/:id/maestria/:id_maestrium' => 'estudiante#maestria', :as => :estudiante_maestria
+  match 'estudiantes/:id/maestria/:id_pensum' => 'estudiantes#maestria', :as => :estudiante_maestria
 end

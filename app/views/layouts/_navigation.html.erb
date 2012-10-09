@@ -13,6 +13,10 @@
     <li>
     <%= link_to 'Editar Cuenta', edit_user_registration_path %>
     </li>
+    <li>
+    <%= link_to 'Mis Maestrias', estudiante_maestrias_path(current_user) %>
+    </li>
+    
     <% if current_user.has_role? :admin %>
       <li>
       <%= link_to 'Admin', users_path %>

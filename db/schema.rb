@@ -11,7 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121008164044) do
+ActiveRecord::Schema.define(:version => 20121009165536) do
+
+  create_table "estudiante_pensums", :force => true do |t|
+    t.integer  "estudiante_id"
+    t.integer  "pensum_id"
+    t.string   "estado"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "estudiante_pensums", ["estudiante_id"], :name => "index_estudiante_pensums_on_estudiante_id"
+  add_index "estudiante_pensums", ["pensum_id"], :name => "index_estudiante_pensums_on_pensum_id"
+
+  create_table "estudiante_seccions", :force => true do |t|
+    t.integer  "estudiante_id"
+    t.integer  "seccion_id"
+    t.string   "estado"
+    t.string   "periodo"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "estudiante_seccions", ["estudiante_id"], :name => "index_estudiante_seccions_on_estudiante_id"
+  add_index "estudiante_seccions", ["seccion_id"], :name => "index_estudiante_seccions_on_seccion_id"
 
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
@@ -50,31 +73,6 @@ ActiveRecord::Schema.define(:version => 20121008164044) do
   end
 
   add_index "horarios", ["seccion_id"], :name => "index_horarios_on_seccion_id"
-
-  create_table "inscripcion_maestria", :force => true do |t|
-    t.integer  "estudiante_id"
-    t.integer  "maestrium_id"
-    t.string   "estado"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "inscripcion_maestria", ["estudiante_id"], :name => "index_inscripcion_maestria_on_estudiante_id"
-  add_index "inscripcion_maestria", ["maestrium_id"], :name => "index_inscripcion_maestria_on_maestrium_id"
-
-  create_table "inscripcion_materia", :force => true do |t|
-    t.integer  "estudiante_id"
-    t.integer  "materium_id"
-    t.integer  "seccion_id"
-    t.string   "estado"
-    t.string   "periodo"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "inscripcion_materia", ["estudiante_id"], :name => "index_inscripcion_materia_on_estudiante_id"
-  add_index "inscripcion_materia", ["materium_id"], :name => "index_inscripcion_materia_on_materium_id"
-  add_index "inscripcion_materia", ["seccion_id"], :name => "index_inscripcion_materia_on_seccion_id"
 
   create_table "maestria", :force => true do |t|
     t.integer  "user_id"
@@ -121,12 +119,12 @@ ActiveRecord::Schema.define(:version => 20121008164044) do
     t.date     "fechacreacion"
     t.string   "nombre"
     t.boolean  "estado"
-    t.integer  "maestria_id"
+    t.integer  "maestrium_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
-  add_index "pensums", ["maestria_id"], :name => "index_pensums_on_maestria_id"
+  add_index "pensums", ["maestrium_id"], :name => "index_pensums_on_maestrium_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

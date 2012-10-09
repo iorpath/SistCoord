@@ -5,6 +5,6 @@ FactoryGirl.define do
     fechacreacion "2012-09-22"
     nombre "MyString"
     estado false
-    maestria nil
+    maestrium nil
   end
 end

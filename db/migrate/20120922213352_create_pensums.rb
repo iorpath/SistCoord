@@ -4,10 +4,10 @@ class CreatePensums < ActiveRecord::Migration
       t.date :fechacreacion
       t.string :nombre
       t.boolean :estado
-      t.references :maestria
+      t.references :maestrium
 
       t.timestamps
     end
-    add_index :pensums, :maestria_id
+    add_index :pensums, :maestrium_id
   end
 end
