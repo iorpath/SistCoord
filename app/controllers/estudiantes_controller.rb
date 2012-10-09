@@ -95,7 +95,7 @@ class EstudiantesController < ApplicationController
     
     @materias_por_semestre = []    
     8.times do |n|
-    @materias_por_semestre <<  @pensum.materias_semestre_sugerido
+    @materias_por_semestre <<  @pensum.materias_semestre_sugerido(n)
     end
     @materias_primero = @pensum.materias_semestre_sugerido 1
     @materias_segundo = @pensum.materias_semestre_sugerido 2

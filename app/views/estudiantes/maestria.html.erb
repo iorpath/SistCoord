@@ -10,7 +10,11 @@
 
 	<p>
 		<strong> Estado: </strong>
-		<%= @pensum.estado%>
+		<% if @pensum.estado%>
+		Finalizado
+		<%else%>
+		Pendiente
+		<%end%>
 	</p>
 
 	<p>
@@ -19,200 +23,37 @@
 	</p>
 </div>
 <div style="padding-top: 30px">
-	<h2>Materias <small> Plan de estudios sugerido </small></h2>
-
+	<h2>Materias</h2>
+	<h2> <small> Plan de estudios sugerido </small></h2>
+	<%@materias_por_semestre.each_with_index do |materias, index|%>
 	<div>
-		<h3> Primer Semestre </h3>
+		<h3> Semestre <%= index+1%> </h3>
 		<p>
 			<table class="table table-striped">
 				<tr>
 					<th>Nombre</th>
 					<th>Codigo</th>
-					<th>Aprobado</th>
+					<th>Estado</th>
+					<th>Periodo</th>
 				</tr>
 
-				<% @materias_primero.each do |materia| %>
+				<% materias.each do |materia| %>
 				<tr>
 					<td><%= materia.nombre %></td>
 					<td><%= materia.codigo %></td>
 					<%if @estudiante.is_materia_aprobada?(materia)%>
 					<td>Aprobado</td>
+					<td>2008-2</td>
 					<%else%>
 					<td>Pendiente</td>
+					<td>No Aplica </td>
 					<%end%>
 				</tr>
 				<% end %>
 			</table>
 		</p>
 	</div>
+	<%end%>
 
-	<div>
-		<h3> Segundo Semestre </h3>
-		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Aprobado</th>
-				</tr>
-
-				<% @materias_segundo.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<%else%>
-					<td>Pendiente</td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
-		</p>
-	</div>
-	<div>
-		<h3> Tercer Semestre </h3>
-		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Aprobado</th>
-				</tr>
-
-				<% @materias_tercero.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<%else%>
-					<td>Pendiente</td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
-		</p>
-	</div>
-	<div>
-		<h3> Cuarto Semestre </h3>
-		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Aprobado</th>
-				</tr>
-
-				<% @materias_cuarto.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<%else%>
-					<td>Pendiente</td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
-		</p>
-	</div>
-	<div>
-		<h3> Quinto Semestre </h3>
-		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Aprobado</th>
-				</tr>
-
-				<% @materias_quinto.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<%else%>
-					<td>Pendiente</td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
-		</p>
-	</div>
-	<div>
-		<h3> Sexto Semestre </h3>
-		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Aprobado</th>
-				</tr>
-
-				<% @materias_sexto.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<%else%>
-					<td>Pendiente</td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
-		</p>
-	</div>
-	<div>
-		<h3> Septimo Semestre </h3>
-		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Aprobado</th>
-				</tr>
-
-				<% @materias_septimo.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<%else%>
-					<td>Pendiente</td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
-		</p>
-	</div>
-	<div>
-		<h3> Octavo Semestre </h3>
-		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Aprobado</th>
-				</tr>
-
-				<% @materias_octavo.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<%else%>
-					<td>Pendiente</td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
-		</p>
-	</div>
 </div>
 
