@@ -11,7 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+ActiveRecord::Schema.define(:version => 20120922231842) do
 ActiveRecord::Schema.define(:version => 20121009165536) do
+
 
   create_table "estudiante_pensums", :force => true do |t|
     t.integer  "estudiante_id"
@@ -35,6 +37,8 @@ ActiveRecord::Schema.define(:version => 20121009165536) do
 
   add_index "estudiante_seccions", ["estudiante_id"], :name => "index_estudiante_seccions_on_estudiante_id"
   add_index "estudiante_seccions", ["seccion_id"], :name => "index_estudiante_seccions_on_seccion_id"
+
+
 
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"
