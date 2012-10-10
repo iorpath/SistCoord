@@ -17,11 +17,11 @@
   <div><%= f.label 'Password Actual' %> <i>(se necesita su actual password para confirmar los cambios)</i><br />
   <%= f.password_field :current_password %></div>
 
-  <div><%= f.submit "Actualizar" %></div>
+  <div><%= f.submit "Actualizar",:class => 'btn btn-primary' %></div>
 <% end %>
 
 <h3>Cancelar la cuenta</h3>
 
-<p>¿Insatisfecho? <%= link_to "Cancelar la cuenta", registration_path(resource_name), :data => { :confirm => "¿Está seguro?" }, :method => :delete %>.</p>
+<p>¿Insatisfecho? <%= link_to "Cancelar la cuenta", registration_path(resource_name), :data => { :confirm => "¿Está seguro?" }, :method => :delete,:class => 'btn btn-warning' %>.</p>
 
-<%= link_to "Atrás", :back %>
+<%= link_to "Atrás", :back,:class => 'btn btn-primary' %>
