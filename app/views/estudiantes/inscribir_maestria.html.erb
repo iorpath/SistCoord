@@ -1,0 +1,22 @@
+<%= form_for(@estudiante) do |f| %>
+  <% if @estudiante.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@estudiante.errors.count, "error") %> errores impidieron que la informaci&oacute;n del estudiante fuera almacenada con &eacute;xito:</h2>
+
+      <ul>
+      <% @estudiante.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label for="estudiante_maestrium_id">Maestria</label>
+    <%= select(:pensum_select, :pensum_id, Maestrium.all.collect{|t|["#{t.nombre}", t.pensum_actual.id]}) %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit 'Enviar Solicitud' %>
+  </div>
+<% end %>

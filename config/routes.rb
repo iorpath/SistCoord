@@ -37,4 +37,7 @@ SistCoord::Application.routes.draw do
   
   #Informacion de la maestria de acuerdo al estudiante
   match 'estudiantes/:id/maestria/:id_pensum' => 'estudiantes#maestria', :as => :estudiante_maestria
+  
+  #Enviar solicitud de inscribir una nueva maestria
+  match 'estudiantes/:id/maestrias/inscribir' => 'estudiantes#inscribir_maestria', :as => :estudiante_inscribir_maestria
 end

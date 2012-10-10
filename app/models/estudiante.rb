@@ -6,7 +6,7 @@ class Estudiante < ActiveRecord::Base
   has_many :pensums, :through => :estudiante_pensums, :select => "estudiante_pensums.estado, estudiante_pensums.created_at, pensums.*"
   has_many :estudiantepensums
   has_many :estudiantemateria
-  attr_accessible :direccion, :documento, :foto, :telefono, :tipo_documento, :tipo_estudiante, :user, :user_id
+  attr_accessible :direccion, :documento, :foto, :telefono, :tipo_documento, :tipo_estudiante, :user, :user_id, :pensums
   mount_uploader :foto, FileUploader
   
   #Retorna si una materia ya fue aprobada por el estudiante

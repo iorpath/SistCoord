@@ -58,6 +58,9 @@ class EstudiantesController < ApplicationController
     @estudiante = Estudiante.find(params[:id])
 
     respond_to do |format|
+      if params[:pensum_select][:pensum_id]
+        @estudiante.pensums << Pensum.find(params[:pensum_select][:pensum_id])
+      end
       if @estudiante.update_attributes(params[:estudiante])
         format.html { redirect_to @estudiante, notice: 'La informacion del estudiante ha sido actualizada exitosamente' }
         format.json { head :no_content }
@@ -109,5 +112,9 @@ class EstudiantesController < ApplicationController
   
   def menu
      @estudiante = Estudiante.find params[:id]
+  end
+  
+  def inscribir_maestria
+    @estudiante = Estudiante.find params[:id]
   end
 end

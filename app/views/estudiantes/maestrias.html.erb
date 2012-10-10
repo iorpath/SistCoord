@@ -1,6 +1,6 @@
 <h1>Mis Maestrias</h1>
 
-<table class="table table-bordered">
+<table class="table table-striped">
   <tr>
   	<th>Nombre</th>
     <th>Estado </th>
@@ -11,7 +11,11 @@
 	<% @maestrias_estudiante.each do |pensum| %>
 	  <tr>
 	    <td><%= pensum.maestrium.nombre %></td>
-	    <td><%= pensum.estado %></td>
+	    <% if pensum.estado%>
+	    <td>Terminado</td>
+	    <%else%>
+	    <td>En progreso </td>
+	    <%end%>
 	    <td><%= pensum.created_at %></td>
 	    <td><%= link_to 'Ver', estudiante_maestria_path(@estudiante,pensum) %></td>
 	  </tr>
@@ -19,8 +23,13 @@
 <% else %>
 	  <tr>
 	    <td>No hay maestrias inscritas</td>
+	    <td></td>
+	    <td></td>
+	    <td></td>
 	  </tr>
 <% end %>
 </table>
+
+<%= link_to 'Inscribir una Maestria', estudiante_inscribir_maestria_path, :class => 'btn' %>
 
 <br />
