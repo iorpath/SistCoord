@@ -4,7 +4,7 @@ class CreateEstudiantePensums < ActiveRecord::Migration
       t.references :estudiante
       t.references :pensum
       t.string :estado
-
+      t.string :carpeta
       t.timestamps
     end
     add_index :estudiante_pensums, :estudiante_id

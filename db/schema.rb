@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20121009165536) do
     t.integer  "estudiante_id"
     t.integer  "pensum_id"
     t.string   "estado"
+    t.string   "carpeta"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
@@ -48,20 +49,6 @@ ActiveRecord::Schema.define(:version => 20121009165536) do
   add_index "estudiantemateria", ["estudiante_id"], :name => "index_estudiantemateria_on_estudiante_id"
   add_index "estudiantemateria", ["materium_id"], :name => "index_estudiantemateria_on_materium_id"
   add_index "estudiantemateria", ["tipo_pensum_id"], :name => "index_estudiantemateria_on_tipo_pensum_id"
-
-  create_table "estudiantepensums", :force => true do |t|
-    t.string   "estado"
-    t.string   "carpeta"
-    t.integer  "estudiante_id"
-    t.integer  "maestrium_id"
-    t.integer  "pensum_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "estudiantepensums", ["estudiante_id"], :name => "index_estudiantepensums_on_estudiante_id"
-  add_index "estudiantepensums", ["maestrium_id"], :name => "index_estudiantepensums_on_maestrium_id"
-  add_index "estudiantepensums", ["pensum_id"], :name => "index_estudiantepensums_on_pensum_id"
 
   create_table "estudiantes", :force => true do |t|
     t.integer  "user_id"

@@ -3,7 +3,7 @@ class FachadaPensums
      #Se obtiene el estudiante
      @estudiante = Estudiante.find(idEstudiante)
      #Se obtienen las maestrias
-     @estudiantepensums = @estudiante.estudiantepensums
+     @estudiantepensums = @estudiante.estudiante_pensums
      @estudiantematerias = @estudiante.estudiantemateria
      
      @materiasVistas = {}
