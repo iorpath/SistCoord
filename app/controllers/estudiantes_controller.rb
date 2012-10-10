@@ -93,7 +93,10 @@ class EstudiantesController < ApplicationController
   end
   
   def maestria
-    @estudiante = Estudiante.find params[:id]
+    @estudiante = User.find(params[:id]).estudiante
+    if @estudiante.nil?
+      @estudiante = Estudiante.find params[:id]
+    end
     @pensum = Pensum.find params[:id_pensum]
     @maestria = @pensum.maestrium
     
@@ -116,6 +119,9 @@ class EstudiantesController < ApplicationController
   end
   
   def inscribir_maestria
-    @estudiante = Estudiante.find params[:id]
+    @estudiante = User.find(params[:id]).estudiante
+    if @estudiante.nil?
+      @estudiante = Estudiante.find params[:id]
+    end
   end
 end
