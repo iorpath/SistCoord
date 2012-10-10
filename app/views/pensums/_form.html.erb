@@ -24,10 +24,10 @@
     <%= f.check_box :estado %>
   </div>
   <div class="field">
-    <%= f.label :maestria %><br />
-    <%= f.text_field :maestria %>
+    <label for="pensum_maestrium_id">Maestr&iacute;a</label>
+    <%= f.select(:maestrium_id, Maestrium.all.collect{|t|["#{t.codigo} - #{t.nombre}",t.id]}) %>
   </div>
   <div class="actions">
-    <%= f.submit,:class => 'btn btn-primary' %>
+    <%= f.submit 'Crear/editar pensum',:class => 'btn btn-primary' %>
   </div>
 <% end %>

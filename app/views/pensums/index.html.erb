@@ -16,7 +16,7 @@
     <td><%= pensum.fechacreacion %></td>
     <td><%= pensum.nombre %></td>
     <td><%= pensum.estado %></td>
-    <td><%= pensum.maestria %></td>
+    <td><%= pensum.maestrium.nombre %></td>
     <td><%= link_to 'Ver', pensum,:class => 'btn btn-info' %></td>
     <td><%= link_to 'Editar', edit_pensum_path(pensum),:class => 'btn btn-warning' %></td>
     <td><%= link_to 'Eliminar', pensum, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger' %></td>

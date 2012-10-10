@@ -5,7 +5,7 @@ class Pensum < ActiveRecord::Base
   has_many :materia, :through => :materia_pensums, :select => "materia.*, materia_pensums.semestre_sugerido as semestre"
   has_many :estudiante_pensums
   has_many :estudiantes, :through => :estudiante_pensums
-  attr_accessible :estado, :fechacreacion, :nombre
+  attr_accessible :estado, :fechacreacion, :nombre, :maestrium, :maestrium_id
   
   
   def materias_semestre_sugerido(semestre)
