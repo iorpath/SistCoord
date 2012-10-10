@@ -4,6 +4,8 @@ class Estudiante < ActiveRecord::Base
   has_many :seccions, :through => :estudiante_seccions, :select => "estudiante_seccions.estado, seccions.*"
   has_many :estudiante_pensums
   has_many :pensums, :through => :estudiante_pensums, :select => "estudiante_pensums.estado, estudiante_pensums.created_at, pensums.*"
+  has_many :estudiantepensums
+  has_many :estudiantemateria
   attr_accessible :direccion, :documento, :foto, :telefono, :tipo_documento, :tipo_estudiante, :user, :user_id
   mount_uploader :foto, FileUploader
   
