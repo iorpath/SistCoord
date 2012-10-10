@@ -27,6 +27,14 @@ def create_user
   @user = FactoryGirl.create(:user, email: @visitor[:email])
 end
 
+def create_admin_user
+  create_visitor
+  delete_user
+  @user = FactoryGirl.create(:user, name: @visitor[:name], email: @visitor[:email])
+  @user.add_role :admin
+  @user.save
+end
+
 def delete_user
   @user ||= User.first conditions: {:email => @visitor[:email]}
   @user.destroy unless @user.nil?
@@ -35,10 +43,10 @@ end
 def sign_up
   delete_user
   visit '/users/sign_up'
-  fill_in "Nombre del estudiante", :with => @visitor[:name]
-  fill_in "Correo uniandes", :with => @visitor[:email]
-  fill_in "Password", :with => @visitor[:password]
-  fill_in "Confirmaci&oacute;n del password", :with => @visitor[:password_confirmation]
+  fill_in "user_name", :with => @visitor[:name]
+  fill_in "user_email", :with => @visitor[:email]
+  fill_in "user_password", :with => @visitor[:password]
+  fill_in "user_password_confirmation", :with => @visitor[:password_confirmation]
   click_button "Registrar"
   find_user
 end
@@ -127,14 +135,14 @@ When /^I sign in with a wrong password$/ do
 end
 
 When /^I edit my account details$/ do
-  click_link "Edit account"
-  fill_in "Name", :with => "newname"
-  fill_in "Current password", :with => @visitor[:password]
-  click_button "Update"
+  click_link "Editar Cuenta"
+  fill_in "user_name", :with => "newname"
+  fill_in "user_current_password", :with => @visitor[:password]
+  click_button "Actualizar"
 end
 
 When /^I look at the list of users$/ do
-  create_auth_user
+  create_admin_user
   sign_in
   visit '/users'
 end
@@ -161,7 +169,7 @@ Then /^I see a successful sign in message$/ do
 end
 
 Then /^I should see a successful sign up message$/ do
-  page.should have_content "Welcome! You have signed up successfully."
+  page.should have_content "Bienvenido! Usted se ha registrado exitosamente."
 end
 
 Then /^I should see an invalid email message$/ do
@@ -193,6 +201,6 @@ Then /^I should see an account edited message$/ do
 end
 
 Then /^I should see my name$/ do
-  create_user
+  create_admin_user
   page.should have_content @user[:name]
 end
