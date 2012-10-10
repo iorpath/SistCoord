@@ -59,7 +59,8 @@ class EstudiantesController < ApplicationController
 
     respond_to do |format|
       if params[:pensum_select][:pensum_id]
-        @estudiante.pensums << Pensum.find(params[:pensum_select][:pensum_id])
+        pensum = Pensum.find(params[:pensum_select][:pensum_id])
+        @estudiante.pensums << pensum
       end
       if @estudiante.update_attributes(params[:estudiante])
         format.html { redirect_to @estudiante, notice: 'La informacion del estudiante ha sido actualizada exitosamente' }

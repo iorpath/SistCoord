@@ -1,20 +1,76 @@
 <h3>Registro de Estudiante</h3>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-<p><%= f.label 'Nombre del Estudiante' %><br />
-<%= f.text_field :name %></p>
+<%= devise_error_messages! %>
+<p>
+	<%= f.label 'Nombre del Estudiante' %>
+	<br />
+	<%= f.text_field :name %>
+</p>
 
-  <div><%= f.label  'Correo' %><br />
-  <%= f.email_field :email %></div>
+<div>
+	<%= f.label  'Correo' %>
+	<br />
+	<%= f.email_field :email %>
+</div>
 
-  <div><%= f.label  'Password' %><br />
-  <%= f.password_field :password %></div>
+<div>
+	<%= f.label  'Password' %>
+	<br />
+	<%= f.password_field :password %>
+</div>
 
-  <div><%= f.label 'Confirmación del Password' %><br />
-  <%= f.password_field :password_confirmation %></div>
+<div>
+	<%= f.label 'Confirmación del Password' %>
+	<br />
+	<%= f.password_field :password_confirmation %>
+</div>
+<div>
+	<%= f.fields_for :estudiante_attributes do |ff| %>
+	
+	<p>
+		<%= ff.label :direccion %>
+		<br />
+		<%= ff.text_field :direccion %>
+	</p>
+	
+	<p>
+		<%= ff.label :foto %>
+		<br />
+		<%= ff.file_field :foto %>
+	</p>
+	
+	<p>
+		<%= ff.label :documento %>
+		<br />
+		<%= ff.text_field :documento %>
+	</p>
+	
+	<p>
+		<%= ff.label :telefono %>
+		<br />
+		<%= ff.text_field :telefono %>
+	</p>
+	
+	<p>
+		<%= ff.label :tipo_documento %>
+		<br />
+		<%= ff.text_field :tipo_documento %>
+	</p>
+	
+	<p>
+		<%= ff.label :tipo_estudiante %>
+		<br />
+		<%= ff.text_field :tipo_estudiante %>
+	</p>
+	
+	<% end %>
+	
+</div>
+<div>
+	<%= f.submit "Registrar" %>
+</div>
 
-  <div><%= f.submit "Registrar" %></div>
-<% end %>
+<%end%>
 
 <%= render "devise/shared/links" %>
