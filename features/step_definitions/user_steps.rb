@@ -5,6 +5,11 @@ def create_visitor
     :password => "please", :password_confirmation => "please" }
 end
 
+def create_auth_user
+  @visitor ||= { :name => "Testy McUserton", :email => "user@example.com",
+    :password => "please", :password_confirmation => "please" }
+end
+
 def find_user
   @user ||= User.first conditions: {:email => @visitor[:email]}
 end
@@ -30,11 +35,11 @@ end
 def sign_up
   delete_user
   visit '/users/sign_up'
-  fill_in "Name", :with => @visitor[:name]
-  fill_in "Email", :with => @visitor[:email]
+  fill_in "Nombre del estudiante", :with => @visitor[:name]
+  fill_in "Correo uniandes", :with => @visitor[:email]
   fill_in "Password", :with => @visitor[:password]
-  fill_in "Password confirmation", :with => @visitor[:password_confirmation]
-  click_button "Sign up"
+  fill_in "Confirmaci&oacute;n del password", :with => @visitor[:password_confirmation]
+  click_button "Registrar"
   find_user
 end
 
@@ -129,20 +134,21 @@ When /^I edit my account details$/ do
 end
 
 When /^I look at the list of users$/ do
-  visit '/'
+  create_auth_user
+  sign_in
+  visit '/users'
 end
 
 ### THEN ###
 Then /^I should be signed in$/ do
-  page.should have_content "Logout"
-  page.should_not have_content "Sign up"
-  page.should_not have_content "Login"
+  page.should have_content "Cerrar Sesi"
+  #page.should_not have_content "Sign up"
+  page.should_not have_content "Iniciar Sesi"
 end
 
 Then /^I should be signed out$/ do
-  page.should have_content "Sign up"
-  page.should have_content "Login"
-  page.should_not have_content "Logout"
+  page.should have_content "Iniciar Sesi"
+  page.should_not have_content "Cerrar Sesi"
 end
 
 Then /^I see an unconfirmed account message$/ do
@@ -150,7 +156,8 @@ Then /^I see an unconfirmed account message$/ do
 end
 
 Then /^I see a successful sign in message$/ do
-  page.should have_content "Signed in successfully."
+  page.should have_content "Inicio de sesi"
+  page.should have_content "n satisfactorio."
 end
 
 Then /^I should see a successful sign up message$/ do
@@ -174,11 +181,11 @@ Then /^I should see a mismatched password message$/ do
 end
 
 Then /^I should see a signed out message$/ do
-  page.should have_content "Signed out successfully."
+  page.should have_content "Ha salido satisfactoriamente."
 end
 
 Then /^I see an invalid login message$/ do
-  page.should have_content "Invalid email or password."
+  page.should have_content "Correo o password inv"
 end
 
 Then /^I should see an account edited message$/ do
