@@ -26,13 +26,13 @@
     <td><%= estudiante.tipo_estudiante %></td>
     <td><%= estudiante.tipo_documento %></td>
     <td><%= estudiante.documento %></td>
-    <td><%= link_to 'Ver información', estudiante %></td>
-   	<td> <%= link_to 'Editar', edit_estudiante_path(estudiante) %> </td>
-   	<td> <%= link_to 'Eliminar', estudiante, method: :delete, data: { confirm: 'Esta seguro de realizar la eliminacion?' } %></td>
+    <td><%= link_to 'Ver', estudiante, :class =>'btn btn-info'%></td>
+   	<td> <%= link_to 'Editar', edit_estudiante_path(estudiante), :class =>'btn btn-warning' %> </td>
+   	<td> <%= link_to 'Eliminar', estudiante, method: :delete, data: { confirm: 'Esta seguro de realizar la eliminacion?' }, :class =>'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Crear estudiante', new_estudiante_path %>
+<%= link_to 'Crear estudiante', new_estudiante_path, :class => 'btn btn-primary' %>

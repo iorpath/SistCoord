@@ -1,7 +1,6 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<h3>Informacion de usuario</h3>
+<p><strong> User:</strong> <%= @user.name %></p>
+<p><strong> Email: </strong> <%= @user.email if @user.email %></p>
 
-<%if not @user.estudiante.nil?%>
-<%= link_to 'Menu estudiante', menu_estudiante_path(@user.estudiante) %>
-<% end %>
+<%= link_to 'Menu usuarios', users_path, :class => 'btn' %>
+

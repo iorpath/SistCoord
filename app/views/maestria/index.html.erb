@@ -1,4 +1,4 @@
-<h1>Maestr&iacute;as</h1>
+<h3>Maestr&iacute;as</h3>
 
 <table class="table table-bordered">
   <tr>
@@ -20,11 +20,13 @@
     <td></td>
     <td></td>
     <% end %>
-    <td><%= link_to 'Ver información', maestrium %> | <%= link_to 'Editar', edit_maestrium_path(maestrium) %> | <%= link_to 'Eliminar', maestrium, method: :delete, data: { confirm: 'Esta seguro de realizar la eliminacion?' } %></td>
+    <td><%= link_to 'Ver información', maestrium,:class => 'btn btn-info' %> </td> 
+    <td><%= link_to 'Editar', edit_maestrium_path(maestrium),:class => 'btn btn-warning' %></td>
+    <td><%= link_to 'Eliminar', maestrium, method: :delete, data: { confirm: 'Esta seguro de realizar la eliminacion?' },:class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Crear maestria', new_maestrium_path %>
+<%= link_to 'Crear maestria', new_maestrium_path, :class => 'btn btn-primary' %>

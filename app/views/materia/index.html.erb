@@ -1,4 +1,4 @@
-<h1>Materias</h1>
+<h3>Materias</h3>
 
 <table class="table table-bordered">
   <tr>
@@ -6,7 +6,7 @@
     <th>Nombre Materia</th>
     <th>C&oacute;digo Maestria</th>
     <th>Nombre Maestria</th>
-    <th>Acciones</th>
+    <th align = "center">Acciones</th>
   </tr>
 
 <% @materia.each do |materium| %>
@@ -20,13 +20,13 @@
     <td></td>
     <td></td>
     <% end %>
-    <td><%= link_to 'Ver información', materium %></td>
-    <td><%= link_to 'Editar', edit_materium_path(materium) %></td> 
-    <td> <%= link_to 'Eliminar', materium, method: :delete, data: { confirm: 'Está seguro de realizar la eliminacion?' } %></td>
+    <td><%= link_to 'Ver información', materium, :class => 'btn btn-info' %></td>
+    <td><%= link_to 'Editar', edit_materium_path(materium), :class => 'btn btn-warning' %></td> 
+    <td> <%= link_to 'Eliminar', materium, method: :delete, data: { confirm: 'Está seguro de realizar la eliminacion?' }, :class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Nueva materia', new_materium_path %>
+<%= link_to 'Nueva materia', new_materium_path, :class => 'btn btn-primary' %>

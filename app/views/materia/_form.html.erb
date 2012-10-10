@@ -24,6 +24,6 @@
     <%= f.select(:maestrium_id, Maestrium.all.collect{|t|["#{t.codigo} - #{t.nombre}",t.id]}) %>
   </div>
   <div class="actions">
-    <%= f.submit 'Crear/editar materia' %>
+    <%= f.submit 'Crear/editar materia',:class => 'btn btn-primary' %>
   </div>
 <% end %>

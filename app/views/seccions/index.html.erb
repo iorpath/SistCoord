@@ -21,13 +21,13 @@
     <td><%= seccion.etiqueta %></td>
     <td><%= seccion.profesor %></td>
     <td><%= seccion.salon %></td>
-    <td><%= link_to 'Mostrar', seccion %></td>
-    <td><%= link_to 'Editar', edit_seccion_path(seccion) %></td>
-    <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: 'Esta seguro?' } %></td>
+    <td><%= link_to 'Mostrar', seccion,:class => 'btn btn-info' %></td>
+    <td><%= link_to 'Editar', edit_seccion_path(seccion),:class => 'btn btn-warning' %></td>
+    <td><%= link_to 'Eliminar', seccion, method: :delete, data: { confirm: 'Esta seguro?' },:class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Nueva seccion', new_seccion_path %>
+<%= link_to 'Nueva seccion', new_seccion_path,:class => 'btn btn-primary' %>

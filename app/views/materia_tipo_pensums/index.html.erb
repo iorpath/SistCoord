@@ -13,13 +13,13 @@
   <tr>
     <td><%= materia_tipo_pensum.materia %></td>
     <td><%= materia_tipo_pensum.tipopensum %></td>
-    <td><%= link_to 'Show', materia_tipo_pensum %></td>
-    <td><%= link_to 'Edit', edit_materia_tipo_pensum_path(materia_tipo_pensum) %></td>
-    <td><%= link_to 'Destroy', materia_tipo_pensum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', materia_tipo_pensum,:class => 'btn btn-info' %></td>
+    <td><%= link_to 'Edit', edit_materia_tipo_pensum_path(materia_tipo_pensum),:class => 'btn btn-warning' %></td>
+    <td><%= link_to 'Destroy', materia_tipo_pensum, method: :delete, data: { confirm: 'Are you sure?' },:class => 'btn btn-danger' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Materia tipo pensum', new_materia_tipo_pensum_path %>
+<%= link_to 'New Materia tipo pensum', new_materia_tipo_pensum_path,:class => 'btn btn-primary' %>
