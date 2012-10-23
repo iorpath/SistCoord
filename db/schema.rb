@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009165536) do
+ActiveRecord::Schema.define(:version => 20121023013839) do
+
+  create_table "encuesta", :force => true do |t|
+    t.string   "nombre"
+    t.integer  "maestrium_id"
+    t.boolean  "habilitada"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "encuesta", ["maestrium_id"], :name => "index_encuesta_on_maestrium_id"
+
+  create_table "encuesta_materia", :force => true do |t|
+    t.integer  "encuestum_id"
+    t.integer  "materium_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "encuesta_materia", ["encuestum_id"], :name => "index_encuesta_materia_on_encuestum_id"
+  add_index "encuesta_materia", ["materium_id"], :name => "index_encuesta_materia_on_materium_id"
 
   create_table "estudiante_pensums", :force => true do |t|
     t.integer  "estudiante_id"
