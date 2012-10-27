@@ -24,10 +24,8 @@ ActiveRecord::Schema.define(:version => 20121023013839) do
   add_index "encuesta", ["maestrium_id"], :name => "index_encuesta_on_maestrium_id"
 
   create_table "encuesta_materia", :force => true do |t|
-    t.integer  "encuestum_id"
-    t.integer  "materium_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer "encuestum_id"
+    t.integer "materium_id"
   end
 
   add_index "encuesta_materia", ["encuestum_id"], :name => "index_encuesta_materia_on_encuestum_id"

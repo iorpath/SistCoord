@@ -1,7 +1,7 @@
 <%= form_for(@encuestum) do |f| %>
   <% if @encuestum.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@encuestum.errors.count, "error") %> prohibited this encuestum from being saved:</h2>
+      <h2><%= pluralize(@encuestum.errors.count, "error") %> impidió que los datos de la encuesta fueran almacenados:</h2>
 
       <ul>
       <% @encuestum.errors.full_messages.each do |msg| %>
@@ -23,6 +23,31 @@
     <%= f.label :habilitada %><br />
     <%= f.check_box :habilitada %>
   </div>
+  
+  
+  
+  <% if @encuestum.maestrium_id != nil then %>
+  <div id="materiumZone" name="materiumZone" class="field">
+    <span>Por favor, seleccione las materias que va a incluir en la encuesta</span>
+    <ul>
+    <%    	
+        if (@encuestum.maestrium.pensums != nil) then
+        	pensum = @encuestum.maestrium.pensums.last
+    		if(pensum != nil) then
+    			pensum.materia.each do |materium|
+    %>
+    <li>
+					<%= check_box_tag 'materium_ids[]', materium.id -%>
+					<%= h (materium.codigo + ' ' +materium.nombre) -%>
+	</li>
+    <% 			end
+    		end
+    	end
+     %>
+    </ul>
+  </div>
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
