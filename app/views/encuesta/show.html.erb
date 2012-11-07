@@ -6,8 +6,10 @@
 </p>
 
 <p>
-  <b>Maestrium:</b>
-  <%= @encuestum.maestrium %>
+  <b>Maestria:</b>
+  <% if @encuestum.maestrium != nil then %>
+  <%= @encuestum.maestrium.nombre %>
+  <% end %>
 </p>
 
 <p>

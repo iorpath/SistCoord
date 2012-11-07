@@ -34,7 +34,14 @@ class EncuestaController < ApplicationController
 
   # GET /encuesta/1/edit
   def edit
+    arreglo = []
     @encuestum = Encuestum.find(params[:id])
+    if(@encuestum.materia != nil) then
+      @encuestum.materia.each do |m|
+        arreglo << m.id
+      end
+    end 
+    @materium_ids = arreglo
   end
 
   # POST /encuesta
@@ -57,9 +64,18 @@ class EncuestaController < ApplicationController
   # PUT /encuesta/1.json
   def update
     @encuestum = Encuestum.find(params[:id])
+    @materiasencuestumids =  params[:materium_ids]
 
     respond_to do |format|
       if @encuestum.update_attributes(params[:encuestum])
+        @encuestum.materia.clear
+        @materiasencuestumids.each do |id|
+          mat = Materium.find(id)
+          if(mat != nil) then
+            @encuestum.materia << mat
+          end
+        end
+        @encuestum.save
         format.html { redirect_to @encuestum, notice: 'Encuestum was successfully updated.' }
         format.json { head :no_content }
       else

@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :encuestum do
-    nombre ""
-    maestrium ""
+    nombre "MyString"
+    maestria nil
     habilitada false
   end
 end

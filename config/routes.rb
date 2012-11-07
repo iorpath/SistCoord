@@ -18,6 +18,8 @@ SistCoord::Application.routes.draw do
   resources :materia
   
   resources :maestria
+  
+  resources :llenar_encuesta
 
   resources :estudiantes do
     member do

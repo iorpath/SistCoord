@@ -1,0 +1,16 @@
+<% if :maestrium_id != nil then %>
+  <div id="materiumZone" name="materiumZone" class="field">
+    <span>Por favor, seleccione las materias que va a incluir en la encuesta</span>
+    <ul>
+    <% 
+    	pensumactual = :maestrium.pensum_actual
+    	pensumactual.materia.each do |materium|
+    %>
+    		<%= check_box_tag 'materium_ids[]', materium.id -%>
+        	<%= h materium.name -%>
+    <% 
+    	end
+     %>
+    </ul>
+  </div>
+<% end %>

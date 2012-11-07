@@ -1,27 +1,30 @@
-<h1>Listing encuesta</h1>
+<h1>Encuestas</h1>
 
 <table>
   <tr>
     <th>Nombre</th>
-    <th>Maestrium</th>
+    <th>C&oacute;digo Maestr&iacute;a</th>
+    <th>Nombre Maestr&iacute;a</th>
     <th>Habilitada</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Acciones</th>
   </tr>
 
 <% @encuesta.each do |encuestum| %>
   <tr>
     <td><%= encuestum.nombre %></td>
-    <td><%= encuestum.maestrium %></td>
+    <% if encuestum.maestrium != nil then %>
+    <td><%= encuestum.maestrium.codigo %></td>
+    <td><%= encuestum.maestrium.nombre %></td>
+    <% else %>
+    <td></td>
+    <td></td>
+    <% end %>
     <td><%= encuestum.habilitada %></td>
-    <td><%= link_to 'Show', encuestum %></td>
-    <td><%= link_to 'Edit', edit_encuestum_path(encuestum) %></td>
-    <td><%= link_to 'Destroy', encuestum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Ver información', encuestum %> | <%= link_to 'Editar', edit_encuestum_path(encuestum) %> | <%= link_to 'Eliminar', encuestum, method: :delete, data: { confirm: 'Está seguro de realizar la operación?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Encuestum', new_encuestum_path %>
+<%= link_to 'Nueva Encuesta', new_encuestum_path %>
