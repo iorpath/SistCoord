@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Año:</b>
+  <%= @periodo.ano %>
+</p>
+
+<p>
+  <b>Semestre:</b>
+  <%= @periodo.semestre %>
+</p>
+
+
+<%= link_to 'Edit', edit_periodo_path(@periodo) %> |
+<%= link_to 'Back', periodos_path %>

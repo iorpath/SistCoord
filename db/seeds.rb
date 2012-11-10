@@ -11,11 +11,15 @@
 #user2 = User.create! :name => 'Second User', :email => 'user2@example.com', :password => 'please', :password_confirmation => 'please'
 #puts 'New user created: ' << user2.name
 #user.add_role :admin
+FactoryGirl.create :periodo, :nombre=>"2012-1"
+FactoryGirl.create :periodo, :nombre=>"2012-2"
+FactoryGirl.create :periodo, :nombre=>"2013-1", :vigente => true
 
 if User.find_by_name("Felipe Test").nil?
   user = FactoryGirl.create :user, :name =>"Felipe Test", :email =>"gf.moyano131@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
   estudiante = FactoryGirl.create :estudiante
-  estudiante.user = user
+  user.estudiante = estudiante
+  user.save
 else
   estudiante = User.find_by_name("Felipe Test").estudiante
 end

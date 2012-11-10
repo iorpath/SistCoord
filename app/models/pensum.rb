@@ -1,6 +1,7 @@
 class Pensum < ActiveRecord::Base
   belongs_to :maestrium
   has_many :tipo_pensum
+  has_many :periodo_pensums
   has_many :materia_pensums
   has_many :materia, :through => :materia_pensums, :select => "materia.*, materia_pensums.semestre_sugerido as semestre"
   has_many :estudiante_pensums

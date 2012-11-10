@@ -60,7 +60,7 @@ class EstudiantesController < ApplicationController
     respond_to do |format|
       if params[:pensum_select][:pensum_id]
         pensum = Pensum.find(params[:pensum_select][:pensum_id])
-        @estudiante.pensums << pensum
+      @estudiante.pensums << pensum
       end
       if @estudiante.update_attributes(params[:estudiante])
         format.html { redirect_to @estudiante, notice: 'La informacion del estudiante ha sido actualizada exitosamente' }
@@ -83,7 +83,7 @@ class EstudiantesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def maestrias
     @estudiante = User.find(params[:id]).estudiante
     if @estudiante.nil?
@@ -91,7 +91,7 @@ class EstudiantesController < ApplicationController
     end
     @maestrias_estudiante = @estudiante.pensums
   end
-  
+
   def maestria
     @estudiante = User.find(params[:id]).estudiante
     if @estudiante.nil?
@@ -99,10 +99,10 @@ class EstudiantesController < ApplicationController
     end
     @pensum = Pensum.find params[:id_pensum]
     @maestria = @pensum.maestrium
-    
-    @materias_por_semestre = []    
+
+    @materias_por_semestre = []
     8.times do |n|
-    @materias_por_semestre <<  @pensum.materias_semestre_sugerido(n)
+      @materias_por_semestre <<  @pensum.materias_semestre_sugerido(n)
     end
     @materias_primero = @pensum.materias_semestre_sugerido 1
     @materias_segundo = @pensum.materias_semestre_sugerido 2
@@ -113,15 +113,26 @@ class EstudiantesController < ApplicationController
     @materias_septimo = @pensum.materias_semestre_sugerido 7
     @materias_octavo = @pensum.materias_semestre_sugerido 8
   end
-  
+
   def menu
-     @estudiante = Estudiante.find params[:id]
+    @estudiante = Estudiante.find params[:id]
   end
-  
+
   def inscribir_maestria
     @estudiante = User.find(params[:id]).estudiante
     if @estudiante.nil?
       @estudiante = Estudiante.find params[:id]
+    end
+  end
+
+  def carpeta
+    @estudiante = User.find(params[:id]).estudiante
+    if @estudiante.nil?
+      @estudiante = Estudiante.find params[:id]
+    end
+    @carpeta = @estudiante.carpeta
+    if not @carpeta.nil?
+      @periodos = @carpeta.periodo_estudiante
     end
   end
 end

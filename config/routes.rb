@@ -1,4 +1,10 @@
 SistCoord::Application.routes.draw do
+  get "materias_periodo/index"
+
+  resources :periodos
+  
+  resources :materias_periodo
+
   resources :encuesta
 
   resources :horarios
@@ -44,4 +50,6 @@ SistCoord::Application.routes.draw do
   
   #Enviar solicitud de inscribir una nueva maestria
   match 'estudiantes/:id/maestrias/inscribir' => 'estudiantes#inscribir_maestria', :as => :estudiante_inscribir_maestria
+  
+  match 'estudiantes/:id/carpeta/' => 'estudiantes#carpeta', :as => :estudiante_carpeta
 end
