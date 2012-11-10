@@ -26,6 +26,7 @@ maestria = FactoryGirl.create :maestrium, :nombre => "Maestria en Seguiridad Inf
 pensum = FactoryGirl.create :pensum, :nombre => "2012-2"
 
 maestria.pensums << pensum
+maestria.user = user
 maestria.save
 
 estudiante.pensums << pensum
@@ -37,3 +38,48 @@ estudiante.save
     pensum.materia_pensums.create :materium => m, :semestre_sugerido => n 
   end
 end
+
+#*******************************
+if User.find_by_name("Felipe TestCoord").nil?
+  user1 = FactoryGirl.create :user, :name =>"Felipe TestCoord", :email =>"gfCoord.moyano131@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+else
+  user1 = User.find_by_name("Felipe TestCoord")
+end  
+
+maestria1 = FactoryGirl.create :maestrium, :nombre => "Maestria en Ingenieria de Sistemas", :codigo => "MISIS"
+
+pensum1 = FactoryGirl.create :pensum, :nombre => "2013-1"
+
+maestria1.pensums << pensum1
+maestria1.user = user1
+maestria1.save
+
+10.times do |m|
+  
+    m = FactoryGirl.create :materium, :nombre => "materia MISIS #{m}", :codigo => "MISIS10#{m}"
+    pensum1.materia_pensums.create :materium => m
+ 
+end
+
+
+maestria2 = FactoryGirl.create :maestrium, :nombre => "Maestria en Arquitecturas  de Tecnologias de informacion", :codigo => "MATI"
+
+
+
+maestria2.pensums << pensum1
+maestria2.user = user1
+maestria2.save
+
+
+10.times do |m|
+  
+    m = FactoryGirl.create :materium, :nombre => "materia MATI #{m}", :codigo => "MATI10#{m}"
+    pensum1.materia_pensums.create :materium => m
+ 
+end
+
+
+
+
+
+ 
