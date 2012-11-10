@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023013839) do
+ActiveRecord::Schema.define(:version => 20121110210909) do
 
   create_table "encuesta", :force => true do |t|
     t.string   "nombre"
@@ -157,6 +157,13 @@ ActiveRecord::Schema.define(:version => 20121023013839) do
   end
 
   add_index "pensums", ["maestrium_id"], :name => "index_pensums_on_maestrium_id"
+
+  create_table "periodos", :force => true do |t|
+    t.integer  "ano"
+    t.string   "semestre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

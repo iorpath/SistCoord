@@ -1,0 +1,25 @@
+<%= form_for(@periodo) do |f| %>
+  <% if @periodo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@periodo.errors.count, "error") %> prohibited this periodo from being saved:</h2>
+
+      <ul>
+      <% @periodo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    Año<br />
+    <%= f.number_field :ano %>
+  </div>
+  <div class="field">
+    <%= f.label :semestre %><br />
+    <%= f.text_field :semestre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

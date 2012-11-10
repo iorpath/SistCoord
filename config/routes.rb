@@ -1,4 +1,6 @@
 SistCoord::Application.routes.draw do
+  resources :periodos
+
   resources :encuesta
 
   resources :horarios

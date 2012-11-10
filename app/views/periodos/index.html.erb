@@ -1,0 +1,25 @@
+<h1>Listing periodos</h1>
+
+<table>
+  <tr>
+    <th style="width: 130px; background-color: gainsboro">Año</th>
+    <th style="width: 130px;  background-color: gainsboro">Semestre</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @periodos.each do |periodo| %>
+  <tr>
+    <td><%= periodo.ano %></td>
+    <td><%= periodo.semestre %></td>
+    <td><%= link_to 'Show', periodo %></td>
+    <td><%= link_to 'Edit', edit_periodo_path(periodo) %></td>
+    <td><%= link_to 'Destroy', periodo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nuevo Periodo', new_periodo_path %>
