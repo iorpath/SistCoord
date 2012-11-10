@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023013839) do
+ActiveRecord::Schema.define(:version => 20121107182837) do
+
+  create_table "carpeta", :force => true do |t|
+    t.integer  "estudiante_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "carpeta", ["estudiante_id"], :name => "index_carpeta_on_estudiante_id"
 
   create_table "encuesta", :force => true do |t|
     t.string   "nombre"
@@ -20,8 +28,6 @@ ActiveRecord::Schema.define(:version => 20121023013839) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
-
-  add_index "encuesta", ["maestrium_id"], :name => "index_encuesta_on_maestrium_id"
 
   create_table "encuesta_materia", :force => true do |t|
     t.integer "encuestum_id"
@@ -158,6 +164,61 @@ ActiveRecord::Schema.define(:version => 20121023013839) do
 
   add_index "pensums", ["maestrium_id"], :name => "index_pensums_on_maestrium_id"
 
+  create_table "periodo_estudiantes", :force => true do |t|
+    t.integer  "carpeta_id"
+    t.integer  "periodo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "periodo_estudiantes", ["carpeta_id"], :name => "index_periodo_estudiantes_on_carpeta_id"
+  add_index "periodo_estudiantes", ["periodo_id"], :name => "index_periodo_estudiantes_on_periodo_id"
+
+  create_table "periodo_pensums", :force => true do |t|
+    t.integer  "pensums_id"
+    t.integer  "periodo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "periodo_pensums", ["pensums_id"], :name => "index_periodo_pensums_on_pensums_id"
+  add_index "periodo_pensums", ["periodo_id"], :name => "index_periodo_pensums_on_periodo_id"
+
+  create_table "periodos", :force => true do |t|
+    t.string   "nombre"
+    t.date     "fecha_inicio"
+    t.date     "fecha_fin"
+    t.boolean  "vigente"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "plan_estudios", :force => true do |t|
+    t.integer  "pensum_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "plan_estudios", ["pensum_id"], :name => "index_plan_estudios_on_pensum_id"
+
+  create_table "respuestas_encuestas_materium", :force => true do |t|
+    t.integer  "respuesta_encuestum_id"
+    t.integer  "materium_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+  end
+
+  add_index "respuestas_encuestas_materium", ["materium_id"], :name => "index_respuestas_encuestas_materium_on_materium_id"
+
+  create_table "respuestas_encuestum", :force => true do |t|
+    t.integer  "encuestum_id"
+    t.integer  "maestrium_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "respuestas_encuestum", ["maestrium_id"], :name => "index_respuestas_encuestum_on_maestrium_id"
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -168,6 +229,25 @@ ActiveRecord::Schema.define(:version => 20121023013839) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "seccion_periodos", :force => true do |t|
+    t.integer  "seccion_id"
+    t.integer  "periodo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "seccion_periodos", ["periodo_id"], :name => "index_seccion_periodos_on_periodo_id"
+
+  create_table "secciones_inscrita", :force => true do |t|
+    t.integer  "estudiante_id"
+    t.integer  "seccion_id"
+    t.integer  "periodo_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "secciones_inscrita", ["periodo_id"], :name => "index_secciones_inscrita_on_periodo_id"
 
   create_table "seccions", :force => true do |t|
     t.integer  "materium_id"

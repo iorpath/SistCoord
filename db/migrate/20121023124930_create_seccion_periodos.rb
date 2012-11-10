@@ -1,7 +1,7 @@
 class CreateSeccionPeriodos < ActiveRecord::Migration
   def change
     create_table :seccion_periodos do |t|
-      t.references, :seccion
+      t.references :seccion
       t.references :periodo
 
       t.timestamps

@@ -1,7 +1,7 @@
 class CreateRespuestasEncuestasMaterium < ActiveRecord::Migration
   def change
     create_table :respuestas_encuestas_materium do |t|
-      t.references, :respuesta_encuestum
+      t.references :respuesta_encuestum
       t.references :materium
 
       t.timestamps
