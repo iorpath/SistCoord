@@ -2,9 +2,7 @@
 
 FactoryGirl.define do
   factory :periodo do
-    nombre ""
-    fecha_inicio ""
-    fecha_fin ""
-    vigente false
+    ano 1
+    semestre "MyString"
   end
 end

@@ -164,6 +164,13 @@ ActiveRecord::Schema.define(:version => 20121107182837) do
 
   add_index "pensums", ["maestrium_id"], :name => "index_pensums_on_maestrium_id"
 
+  create_table "periodos", :force => true do |t|
+    t.integer  "ano"
+    t.string   "semestre"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "periodo_estudiantes", :force => true do |t|
     t.integer  "carpeta_id"
     t.integer  "periodo_id"
