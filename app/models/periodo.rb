@@ -1,3 +1,3 @@
 class Periodo < ActiveRecord::Base
-  attr_accessible :id, :ano, :semestre
+  attr_accessible :fecha_fin, :fecha_inicio, :nombre, :vigente
 end
