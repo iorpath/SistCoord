@@ -1,5 +1,9 @@
 SistCoord::Application.routes.draw do
+  get "materias_periodo/index"
+
   resources :periodos
+  
+  resources :materias_periodo
 
   resources :encuesta
 
