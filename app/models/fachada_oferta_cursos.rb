@@ -67,7 +67,7 @@ class FachadaOfertaCursos
         end
       end
       mapaOrd = mapaTopMaterias.sort_by {|k,v| v}.reverse
-      if(mapaOrd.length < top) then
+      if(mapaOrd.length < top.to_i) then
         llaves = []
         mapaOrd.each do |llave, valor|
           llaves << llave
@@ -77,7 +77,7 @@ class FachadaOfertaCursos
         llaves = []
         contador = 0;
         mapaOrd.each do |llave, valor|
-          if(contador < top ) then
+          if(contador < top.to_i ) then
             llaves << llave
             contador = contador + 1
           end

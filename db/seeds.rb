@@ -38,7 +38,7 @@ estudiante.save
 
 8.times do |n|
   5.times do |m|
-    m = FactoryGirl.create :materium, :nombre => "materia #{m}", :codigo => "MISIS10#{m}#{n}"
+    m = FactoryGirl.create :materium, :nombre => "materia #{m}", :codigo => "MESI10#{m}#{n}"
     pensum.materia_pensums.create :materium => m, :semestre_sugerido => n 
   end
 end
@@ -68,9 +68,9 @@ end
 
 maestria2 = FactoryGirl.create :maestrium, :nombre => "Maestria en Arquitecturas  de Tecnologias de informacion", :codigo => "MATI"
 
+pensum2 = FactoryGirl.create :pensum, :nombre => "Pensum 2013-1"
 
-
-maestria2.pensums << pensum1
+maestria2.pensums << pensum2
 maestria2.user = user1
 maestria2.save
 
@@ -78,7 +78,7 @@ maestria2.save
 10.times do |m|
   
     m = FactoryGirl.create :materium, :nombre => "materia MATI #{m}", :codigo => "MATI10#{m}"
-    pensum1.materia_pensums.create :materium => m
+    pensum2.materia_pensums.create :materium => m
  
 end
 
