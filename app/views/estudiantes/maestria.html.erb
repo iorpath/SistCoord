@@ -1,6 +1,6 @@
 <div class="page-header">
 	<h1>Informacion <%= @maestria.nombre%> </h1>
-	<h1><small> Pensum <%@pensum.nombre%> </small></h1>
+	<h1><small> Pensum <% @pensum.nombre%> </small></h1>
 </div>
 <div>
 	<p>
@@ -24,36 +24,71 @@
 </div>
 <div style="padding-top: 30px">
 	<h2>Materias</h2>
-	<h2> <small> Plan de estudios sugerido </small></h2>
-	<%@materias_por_semestre.each_with_index do |materias, index|%>
+	<h2><small> Plan de estudios sugerido </small></h2>
 	<div>
-		<h3> Semestre <%= index+1%> </h3>
+		<h3> Periodo </h3>
 		<p>
-			<table class="table table-striped">
-				<tr>
-					<th>Nombre</th>
-					<th>Codigo</th>
-					<th>Estado</th>
-					<th>Periodo</th>
-				</tr>
+			<div class "row-fluid">
+				<div class = "span3">
+					<table class="table table-bordered">
+						<tr class="success">
+							<th>Fundamentacion</th>
+						</tr>
+						<tr >
+							<td class="success">asdf</td>
+						</tr>
+						<td></td>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class = "span3">
+					<table class="table  table-bordered">
+						<tr class="success">
+							<th>Profundizacion</th>
+						</tr>
+						<tr >
+							<td class="success">asdf</td>
+						</tr>
+						<td></td>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class = "span3">
+					<table class="table  table-bordered">
+						<tr class="success">
+							<th>Complemento</th>
+						</tr>
+						<tr >
+							<td class="success">asdf</td>
+						</tr>
+						<td></td>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				<div class = "span2">
+					<table class="table  table-bordered">
+						<tr class="success">
+							<th>Integracion</th>
+						</tr>
+						<tr >
+							<td class="success">asdf</td>
+						</tr>
+						<td></td>
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 
-				<% materias.each do |materia| %>
-				<tr>
-					<td><%= materia.nombre %></td>
-					<td><%= materia.codigo %></td>
-					<%if @estudiante.is_materia_aprobada?(materia)%>
-					<td>Aprobado</td>
-					<td>2008-2</td>
-					<%else%>
-					<td>Pendiente</td>
-					<td>No Aplica </td>
-					<%end%>
-				</tr>
-				<% end %>
-			</table>
 		</p>
 	</div>
-	<%end%>
 
 </div>
 
