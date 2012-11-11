@@ -64,11 +64,15 @@ class FachadaOfertaCursos
       end
       mapaOrd = mapaTopMaterias.sort_by {|k,v| v}.reverse
       if(mapaOrd.length < top) then
-        return mapaOrd.keys
+        llaves = []
+        mapaOrd.each do |llave, valor|
+          llaves << llave
+        end
+        return llaves
       else 
         llaves = []
         contador = 0;
-        mapaOrd.keys.each do |llave|
+        mapaOrd.each do |llave, valor|
           if(contador < top ) then
             llaves << llave
             contador = contador + 1
@@ -87,7 +91,7 @@ class FachadaOfertaCursos
         materias = materiasMaestria[maestriumid]
         if(materias != nil) then
           materias.each do |materium|
-            if(idMateriasTop.exists?(materium.id)) then
+            if(idMateriasTop.include?(materium.id)) then
               materium.estop = true
             else
               materium.estop = false

@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :periodo do
-    ano 1
-    semestre "MyString"
+    
   end
 end

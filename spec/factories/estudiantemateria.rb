@@ -6,5 +6,6 @@ FactoryGirl.define do
     estudiante nil
     materium nil
     tipo_pensum nil
+    periodo nil
   end
 end
