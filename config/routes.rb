@@ -1,6 +1,7 @@
 SistCoord::Application.routes.draw do
+  
   resources :periodos
-
+    
   resources :encuesta
 
   resources :horarios
@@ -48,4 +49,8 @@ SistCoord::Application.routes.draw do
   match 'estudiantes/:id/maestrias/inscribir' => 'estudiantes#inscribir_maestria', :as => :estudiante_inscribir_maestria
   
   match 'estudiantes/:id/carpeta/' => 'estudiantes#carpeta', :as => :estudiante_carpeta
+ 
+ resources :materias_periodo, :only => [:index]
+ 
+ resources :oferta_cursos
 end
