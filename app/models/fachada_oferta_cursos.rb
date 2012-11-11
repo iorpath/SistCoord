@@ -43,19 +43,23 @@ class FachadaOfertaCursos
   end
   
   def darIdsMateriasTopDeCoordinador(idCoordinador, top, idPeriodo)
-      materiasTop = darMaestriasCoordinador(idCoordinador)
+      materiasTop = darMateriasPorMaestriaDeCoordinador(idCoordinador)
       mapaTopMaterias = {}
       if(materiasTop != nil) then 
         estmaterias = Estudiantematerium.all 
         if(estmaterias != nil) then
           estmaterias.each do |em|
-            materiasTop.each do |mat|
-              if(em.materium.id == mat.materium.id and
-                 em.periodo.id == idPeriodo) then
-                if (mapaTopMaterias[em.materium.id] != nil) then
-                  mapaTopMaterias[em.materium.id] = mapaTopMaterias[em.materium.id] + 1
-                else
-                  mapaTopMaterias[em.materium.id] = 1
+            materiasTop.each do |idMaestria, mats|
+              if(mats!=nil) then
+                mats.each do |mat|
+                  if(em.materium.id == mat.id and
+                     em.periodo.id == idPeriodo) then
+                    if (mapaTopMaterias[em.materium.id] != nil) then
+                      mapaTopMaterias[em.materium.id] = mapaTopMaterias[em.materium.id] + 1
+                    else
+                      mapaTopMaterias[em.materium.id] = 1
+                    end
+                  end
                 end
               end
             end
@@ -87,8 +91,7 @@ class FachadaOfertaCursos
     idMateriasTop = darIdsMateriasTopDeCoordinador(idCoordinador, top, idPeriodo)
     materiasMaestria = darMateriasPorMaestriaDeCoordinador(idCoordinador)
     if(materiasMaestria != nil) then
-      materiasMaestria.keys.each do |maestriumid|
-        materias = materiasMaestria[maestriumid]
+      materiasMaestria.each do |maestriumid, materias|
         if(materias != nil) then
           materias.each do |materium|
             if(idMateriasTop.include?(materium.id)) then

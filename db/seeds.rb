@@ -11,9 +11,9 @@
 #user2 = User.create! :name => 'Second User', :email => 'user2@example.com', :password => 'please', :password_confirmation => 'please'
 #puts 'New user created: ' << user2.name
 #user.add_role :admin
-FactoryGirl.create :periodo, :nombre=>"2012-1"
-FactoryGirl.create :periodo, :nombre=>"2012-2"
-FactoryGirl.create :periodo, :nombre=>"2013-1", :vigente => true
+periodo1 = FactoryGirl.create :periodo, :nombre=>"2012-1"
+periodo2 = FactoryGirl.create :periodo, :nombre=>"2012-2"
+periodo3 = FactoryGirl.create :periodo, :nombre=>"2013-1", :vigente => true
 
 if User.find_by_name("Felipe Test").nil?
   user = FactoryGirl.create :user, :name =>"Felipe Test", :email =>"gf.moyano131@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
@@ -83,7 +83,23 @@ maestria2.save
 end
 
 
-
-
-
+if User.find_by_name("Luis Fernando Test").nil?
+ userE1 = FactoryGirl.create :user, :name =>"Luis Fernando Test", :email =>"lf.castro32@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante1 = FactoryGirl.create :estudiante
+  userE1.estudiante = estudiante1
+  userE1.save
+else
+  estudiante1 = User.find_by_name("Felipe Test").estudiante
+end
  
+ equalMat = Materium.all.first
+ mat1 = Materium.find(60)
+ mat2 = Materium.find(48)
+ mat3 = Materium.find(49)
+ mat4 = Materium.find(47)
+ 
+ 
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => mat4,  :periodo => periodo3
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => mat2,  :periodo => periodo3
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => mat4,  :periodo => periodo3
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => mat3,  :periodo => periodo3
