@@ -43,19 +43,23 @@ class FachadaOfertaCursos
   end
   
   def darIdsMateriasTopDeCoordinador(idCoordinador, top, idPeriodo)
-      materiasTop = darMaestriasCoordinador(idCoordinador)
+      materiasTop = darMateriasPorMaestriaDeCoordinador(idCoordinador)
       mapaTopMaterias = {}
       if(materiasTop != nil) then 
         estmaterias = Estudiantematerium.all 
         if(estmaterias != nil) then
           estmaterias.each do |em|
-            materiasTop.each do |mat|
-              if(em.materium.id == mat.materium.id and
-                 em.periodo.id == idPeriodo) then
-                if (mapaTopMaterias[em.materium.id] != nil) then
-                  mapaTopMaterias[em.materium.id] = mapaTopMaterias[em.materium.id] + 1
-                else
-                  mapaTopMaterias[em.materium.id] = 1
+            materiasTop.each do |idMaestria, mats|
+              if(mats!=nil) then
+                mats.each do |mat|
+                  if(em.materium.id == mat.id and
+                     em.periodo.id == idPeriodo) then
+                    if (mapaTopMaterias[em.materium.id] != nil) then
+                      mapaTopMaterias[em.materium.id] = mapaTopMaterias[em.materium.id] + 1
+                    else
+                      mapaTopMaterias[em.materium.id] = 1
+                    end
+                  end
                 end
               end
             end
@@ -64,11 +68,15 @@ class FachadaOfertaCursos
       end
       mapaOrd = mapaTopMaterias.sort_by {|k,v| v}.reverse
       if(mapaOrd.length < top) then
-        return mapaOrd.keys
+        llaves = []
+        mapaOrd.each do |llave, valor|
+          llaves << llave
+        end
+        return llaves
       else 
         llaves = []
         contador = 0;
-        mapaOrd.keys.each do |llave|
+        mapaOrd.each do |llave, valor|
           if(contador < top ) then
             llaves << llave
             contador = contador + 1
@@ -83,11 +91,10 @@ class FachadaOfertaCursos
     idMateriasTop = darIdsMateriasTopDeCoordinador(idCoordinador, top, idPeriodo)
     materiasMaestria = darMateriasPorMaestriaDeCoordinador(idCoordinador)
     if(materiasMaestria != nil) then
-      materiasMaestria.keys.each do |maestriumid|
-        materias = materiasMaestria[maestriumid]
+      materiasMaestria.each do |maestriumid, materias|
         if(materias != nil) then
           materias.each do |materium|
-            if(idMateriasTop.exists?(materium.id)) then
+            if(idMateriasTop.include?(materium.id)) then
               materium.estop = true
             else
               materium.estop = false
