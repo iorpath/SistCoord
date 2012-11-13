@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107182837) do
+ActiveRecord::Schema.define(:version => 20121112162600) do
 
   create_table "carpeta", :force => true do |t|
     t.integer  "estudiante_id"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20121107182837) do
     t.integer  "tipo_pensum_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "area"
   end
 
   add_index "estudiantemateria", ["estudiante_id"], :name => "index_estudiantemateria_on_estudiante_id"
@@ -137,9 +138,10 @@ ActiveRecord::Schema.define(:version => 20121107182837) do
     t.integer  "materium_id"
     t.text     "descripcion"
     t.integer  "cantidad"
-    t.integer  "semestre_sugerido"
+    t.string   "semestre_sugerido"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "area"
   end
 
   add_index "materia_pensums", ["materium_id"], :name => "index_materia_pensums_on_materium_id"
