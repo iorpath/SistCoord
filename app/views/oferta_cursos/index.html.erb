@@ -3,10 +3,7 @@
 <% if flash[:notice] %>
 <p><%= flash[:notice]%></p>
 <% end %>
-
-<% if flash[:estado] %>
-<p>estados <%= flash[:estado]%></p>
-<% end %>
+<hr />
 
 <%= form_tag({}, {:method => :get}) do %>
 <table style="border-width: 2px; border-radius: 3; border-color: black; width: 100%">
@@ -21,25 +18,41 @@
 <% end %>
  <hr />
  
-<% @mapamaterias.each do |idmaestrium, materias| %>
-<table>
+<table style="width:100%">
 <tr>
-	<td align="center" style="width: 200px" colspan="2">
+<% @mapamaterias.each do |idmaestrium, materias| %>
+<td align="center">
+<table class="content">
+<tr>
+	<td align="center" style="width: 200px; font-weight: bold; background-color: gainsboro" colspan="2">
 		<% @maestrium = Maestrium.find(idmaestrium) %>
 		<%= @maestrium.codigo %>
 	</td>	
 </tr>
 <% materias.each do |materium| %>
 <tr>
-	<td style="background-color: <%= if(materium.estop == true) then "black" end %>;"><%= materium.codigo %></td>
+	<td style="background-color: <%= if(materium.estop == true) then "yellow" end %>;">
+		<%= link_to materium.codigo, materium, :class => 'linkitem' %>
+		<%= materium.nombre %></td>
 	<td><input type="checkbox" /></td>
 </tr>
 <% end %>
 </table>
+</td>
 <% end %>
-
+</tr>
+</table>
  <hr />
- <>
+ <table>
+ 	<tr>
+ 		<td style="background-color: yellow; width: 10px"></td>
+ 		<td>Cursos con mayor demanda segùn top</td>
+ 	</tr>
+ </table>
+ <%= form_tag({}, {:method => :post, :action => :create}) do %>
+ <div align="center" style="width: 100%">
+ <%= button_to 'Enviar Cambios', oferta_cursos_path,:class => 'btn btn-primary' %>
+ <% end %>
  
 
 

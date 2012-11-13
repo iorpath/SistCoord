@@ -15,8 +15,7 @@ class OfertaCursosController < ApplicationController
       @top_seleccionado = 0
     end
     @fach = FachadaOfertaCursos.new
-    flash[:notice] = "periodo " + @periodo_seleccionado.to_s + ". top " + @top_seleccionado.to_s + ". usuario " + current_user.id.to_s
-    #@mapamaterias = @fach.darMateriasPorMaestriaDeCoordinadorConTop(current_user.id, @top_seleccionado, @periodo_seleccionado)
+    #flash[:notice] = "periodo " + @periodo_seleccionado.to_s + ". top " + @top_seleccionado.to_s + ". usuario " + current_user.id.to_s
     @mapamaterias = @fach.darMateriasPorMaestriaDeCoordinadorConTop(current_user.id,@top_seleccionado, @periodo_seleccionado.to_i)
     #flash[:estado] = @mapamaterias[2][8].estop.to_s
   end
