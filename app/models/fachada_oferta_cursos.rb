@@ -97,7 +97,7 @@ class FachadaOfertaCursos
             if(idMateriasTop.include?(materium.id)) then
               materium.estop = true
             else
-              materium.estop = falsenosotros tenemos pendiente el registro final de la oferta y mostrar los detalles de una materia seleccionada
+              materium.estop = false
             end
           end
         end
