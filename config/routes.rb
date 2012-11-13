@@ -53,4 +53,5 @@ SistCoord::Application.routes.draw do
  resources :materias_periodo, :only => [:index]
  
  resources :oferta_cursos
+ resources :oferta_cursos_detalle
 end

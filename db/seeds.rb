@@ -36,12 +36,13 @@ maestria.user = user
 maestria.save
 
 estudiante.pensums << pensum
+estudiante.tipo_estudiante = "pregrado"
 estudiante.save
 
 semestres = ["Primero", "Intersemestral 1", "Segundo", "Tercero", "Intersemestral 1", "Cuarto"]
 semestres.each do |n|
   5.times do |m|
-    m = FactoryGirl.create :materium, :nombre => "materia #{m}", :codigo => "MESI10#{m}#{n}"
+    m = FactoryGirl.create :materium, :nombre => "materia #{m}", :codigo => "MESI10#{m}#{n}", :maestrium => maestria
     pensum.materia_pensums.create :materium => m, :semestre_sugerido => n 
   end
 end
@@ -63,7 +64,7 @@ maestria1.save
 
 10.times do |m|
   
-    m = FactoryGirl.create :materium, :nombre => "materia MISIS #{m}", :codigo => "MISIS10#{m}"
+    m = FactoryGirl.create :materium, :nombre => "materia MISIS #{m}", :codigo => "MISIS10#{m}", :maestrium => maestria1
     pensum1.materia_pensums.create :materium => m
  
 end
@@ -121,10 +122,12 @@ estudiante.save
 if User.find_by_name("Luis Fernando Test").nil?
  userE1 = FactoryGirl.create :user, :name =>"Luis Fernando Test", :email =>"lf.castro32@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
  estudiante1 = FactoryGirl.create :estudiante
+ estudiante1.tipo_estudiante = "maestria"
+ estudiante1.save
   userE1.estudiante = estudiante1
   userE1.save
 else
-  estudiante1 = User.find_by_name("Felipe Test").estudiante
+  estudiante1 = User.find_by_name("Luis Fernando Test").estudiante
 end
  
  equalMat = Materium.all.first
