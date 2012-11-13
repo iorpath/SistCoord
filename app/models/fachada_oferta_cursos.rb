@@ -97,7 +97,7 @@ class FachadaOfertaCursos
             if(idMateriasTop.include?(materium.id)) then
               materium.estop = true
             else
-              materium.estop = false
+              materium.estop = falsenosotros tenemos pendiente el registro final de la oferta y mostrar los detalles de una materia seleccionada
             end
           end
         end
@@ -108,5 +108,68 @@ class FachadaOfertaCursos
   
   def darPeriodosDisponibles()
     return Periodo.all
+  end
+  
+  def darDetallesMateria(idMateria, idPeriodo)
+    mapaResultados = {}
+    materium = Materium.find(idMateria)
+    if (materium != nil) then
+      mapaResultados["codigo"] = materium.codigo
+      mapaResultados["nombre"] = materium.nombre
+      if (materium.maestrium != nil) then
+        mapaResultados["maestria"] = Maestrium.find(materium.maestrium.id).codigo
+      else
+        mapaResultados["maestria"] = ""
+      end
+      estmaterias = Estudiantematerium.all
+      if (estmaterias != nil) then
+        estmaterias.each do |em|
+            tipoEstudiante = em.estudiante.tipo_estudiante
+            
+            if(em.periodo.id == idPeriodo) then
+              #cuenta cant estudiantes pregrado que toman la materia en el periodo
+              if (tipoEstudiante == "pregrado") then
+                if (mapaResultados["cantidadPregrado"] == nil) then
+                  mapaResultados["cantidadPregrado"] = 1
+                else
+                  mapaResultados["cantidadPregrado"] = mapaResultados["cantidadPregrado"] + 1
+                end  
+              #cuenta cant. estudiantes maestria que toman la materia en el periodo
+              else if (tipoEstudiante == "maestria" or tipoEstudiante == nil) then
+                if (mapaResultados["cantidadMaestria"] == nil) then
+                  mapaResultados["cantidadMaestria"] = 1
+                else
+                  mapaResultados["cantidadMaestria"] = mapaResultados["cantidadMaestria"] + 1 
+                end 
+              end
+              #cuenta estudiantes de una maestria en especifico que la desean ver para el periodo
+              if (em.tipo_pensum != nil) then
+                tipoPensum = TipoPensum.find(em.tipo_pensum.id)
+                if (tipoPensum.pensum != nil) then
+                  pensum = Pensum.find(tipoPensum.pensum.id)
+                  if (pensum.maestrium != nil) then
+                    maestriaconteo = Maestrium.find(pensum.maestrium.id)  
+                    if (mapaResultados[maestriaconteo.codigo] == nil) then
+                      mapaResultados[maestriaconteo.codigo] = 1
+                    else
+                      mapaResultados[maestriaconteo.codigo] = mapaResultados[maestriaconteo.codigo] + 1
+                    end
+                  end
+                end
+              end
+            end
+          end    
+        end
+      end
+      return mapaResultados   
+    else
+      return mapaResultados
+    end 
+  end
+  
+  def definirOfertaCursos(idsMaterias)
+    if (idsMaterias != nil) then
+      
+    end
   end
 end
