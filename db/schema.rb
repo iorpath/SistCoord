@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112162600) do
+ActiveRecord::Schema.define(:version => 20121113034504) do
 
   create_table "carpeta", :force => true do |t|
     t.integer  "estudiante_id"
@@ -156,6 +156,16 @@ ActiveRecord::Schema.define(:version => 20121112162600) do
 
   add_index "materia_tipo_pensums", ["materium_id"], :name => "index_materia_tipo_pensums_on_materium_id"
   add_index "materia_tipo_pensums", ["tipo_pensum_id"], :name => "index_materia_tipo_pensums_on_tipo_pensum_id"
+
+  create_table "oferta_cursos_periodos", :force => true do |t|
+    t.integer  "materium_id"
+    t.integer  "periodo_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "oferta_cursos_periodos", ["materium_id"], :name => "index_oferta_cursos_periodos_on_materium_id"
+  add_index "oferta_cursos_periodos", ["periodo_id"], :name => "index_oferta_cursos_periodos_on_periodo_id"
 
   create_table "pensums", :force => true do |t|
     t.date     "fechacreacion"

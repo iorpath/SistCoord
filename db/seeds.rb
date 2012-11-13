@@ -133,10 +133,156 @@ end
  equalMat = Materium.all.first
  
  
- FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m4,  :periodo => periodo3
- FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m2,  :periodo => periodo3
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m4,  :periodo => periodo3, :area => "Fundamentacion", :estado => "vista"
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m2,  :periodo => periodo3, :area => "Fundamentacion", :estado => "vista"
  
  FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m1,  :periodo => periodo1, :area => "Fundamentacion", :estado => "vista"
  FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m2,  :periodo => periodo2, :area => "Profundizacion", :estado => "vista"
  FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m3,  :periodo => periodo3, :area => "Complemento", :estado => "inscrita"
  FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m4,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+ 
+#****************************
+ms1 = FactoryGirl.create :materium, :nombre => "FROM BIG DATA TO CONTENT ANALYSIS", :codigo => "MISIS4513", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms1, :semestre_sugerido => "Primero", :area => "Fundamentacion"
+
+ms2 = FactoryGirl.create :materium, :nombre => "LOCATION BASED SERVICES AND APPLICATIONS", :codigo => "MISIS4515", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms2, :semestre_sugerido => "Primero", :area => "Fundamentacion"
+
+ms3 = FactoryGirl.create :materium, :nombre => "AUTOMATIZACION DE PROCESOS DE NEGOCIO", :codigo => "MISIS4618", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms3, :semestre_sugerido => "Segundo", :area => "Fundamentacion"
+
+
+ms4 = FactoryGirl.create :materium, :nombre => "PROCESOS AGILES DE DESARROLLO DE SOFTWARE", :codigo => "MISIS4717", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms4, :semestre_sugerido => "Tercero", :area => "Profundizacion"
+
+ms5 = FactoryGirl.create :materium, :nombre => "DESARROLLO DE LINEAS DE PRODUCTO", :codigo => "MISIS4716", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms5, :semestre_sugerido => "Tercero", :area => "Profundizacion"
+
+ms6 = FactoryGirl.create :materium, :nombre => "COMPUTACION VISUAL INTERACTIVA", :codigo => "MISIS4823", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms6, :semestre_sugerido => "Cuarto", :area => "Profundizacion"
+
+
+ms7 = FactoryGirl.create :materium, :nombre => "HERRAMIENTAS DE PROGRAMACION DE ALTO RENDIMIENTO", :codigo => "MISIS4824", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms7, :semestre_sugerido => "Cuarto", :area => "Profundizacion"
+
+ms8 = FactoryGirl.create :materium, :nombre => "DESARRROLLO DE SOFTWARE BASADO EN MODELOS", :codigo => "MISIS4712", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms8, :semestre_sugerido => "Tercero", :area => "Integracion"
+
+ms9 = FactoryGirl.create :materium, :nombre => "DISENO DE SOFTWARE BASADO EN PATRONES", :codigo => "MISIS4707",:maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms9, :semestre_sugerido => "Tercero", :area => "Complemento"
+
+ms10 = FactoryGirl.create :materium, :nombre => "DESARROLLO DE SOFTWARE BASADO EN COMPONENTES", :codigo => "MISIS4713", :maestrium => maestria1
+pensum2.materia_pensums.create :materium => ms10, :semestre_sugerido => "Tercero", :area => "Complemento"
+
+if User.find_by_name("Ivan Orlando Test").nil?
+ userE2 = FactoryGirl.create :user, :name =>"Ivan Orlando Test", :email =>"io.riveros22@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante2 = FactoryGirl.create :estudiante
+ estudiante2.tipo_estudiante = "maestria"
+ estudiante2.save
+  userE2.estudiante = estudiante2
+  userE2.save
+else
+  estudiante2 = User.find_by_name("Ivan Orlando Test").estudiante
+end
+
+if User.find_by_name("Carlos Test").nil?
+ userE3 = FactoryGirl.create :user, :name =>"Carlos Test", :email =>"ce.diaz30@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante3 = FactoryGirl.create :estudiante2
+ estudiante3.tipo_estudiante = "maestria"
+ estudiante3.save
+  userE3.estudiante = estudiante3
+  userE3.save
+else
+  estudiante3 = User.find_by_name("Carlos Test").estudiante
+end
+
+if User.find_by_name("Diego Fernando Test").nil?
+ userE4 = FactoryGirl.create :user, :name =>"Diego Fernando Test", :email =>"df.ordonez94@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante4 = FactoryGirl.create :estudiante
+ estudiante4.tipo_estudiante = "maestria"
+ estudiante4.save
+  userE4.estudiante = estudiante4
+  userE4.save
+else
+  estudiante4 = User.find_by_name("Diego Fernando Test").estudiante
+end
+
+if User.find_by_name("Juan Carlos Test").nil?
+ userE5 = FactoryGirl.create :user, :name =>"Juan Carlos Test", :email =>"jc.castro32@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante5 = FactoryGirl.create :estudiante
+ estudiante5.tipo_estudiante = "maestria"
+ estudiante5.save
+  userE5.estudiante = estudiante5
+  userE5.save
+else
+  estudiante5 = User.find_by_name("Juan Carlos Test").estudiante
+end
+
+if User.find_by_name("Luis Felipe Test").nil?
+ userE6 = FactoryGirl.create :user, :name =>"Luis Felipe Test", :email =>"lfe.castro32@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante6 = FactoryGirl.create :estudiante
+ estudiante6.tipo_estudiante = "maestria"
+ estudiante6.save
+  userE6.estudiante = estudiante6
+  userE6.save
+else
+  estudiante1 = User.find_by_name("Luis Felipe Test").estudiante
+end
+
+if User.find_by_name("Miguel Test").nil?
+ userE7 = FactoryGirl.create :user, :name =>"Miguel Test", :email =>"mi.castro32@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante7 = FactoryGirl.create :estudiante
+ estudiante7.tipo_estudiante = "maestria"
+ estudiante7.save
+  userE7.estudiante = estudiante7
+  userE7.save
+else
+  estudiante7 = User.find_by_name("Miguel Test").estudiante
+end
+
+if User.find_by_name("Marcela Test").nil?
+ userE8 = FactoryGirl.create :user, :name =>"Marcela Test", :email =>"ma.castro32@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante8 = FactoryGirl.create :estudiante
+ estudiante8.tipo_estudiante = "maestria"
+ estudiante8.save
+  userE8.estudiante = estudiante8
+  userE8.save
+else
+  estudiante8 = User.find_by_name("Marcela Test").estudiante
+end
+
+if User.find_by_name("Claudia Test").nil?
+ userE9 = FactoryGirl.create :user, :name =>"Claudia Test", :email =>"cl.castro32@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
+ estudiante9 = FactoryGirl.create :estudiante
+ estudiante9.tipo_estudiante = "maestria"
+ estudiante9.save
+  userE9.estudiante = estudiante9
+  userE9.save
+else
+  estudiante9 = User.find_by_name("Claudia Test").estudiante
+end
+
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante2, :materium => m3,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante2, :materium => ms2,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante3, :materium => m3,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante3, :materium => ms2,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante4, :materium => m3,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante4, :materium => ms2,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante5, :materium => m3,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante5, :materium => ms2,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante6, :materium => m3,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante6, :materium => m4,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante7, :materium => m3,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante7, :materium => ms4,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante8, :materium => ms4,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante8, :materium => ms1,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante9, :materium => ms4,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
+FactoryGirl.create :estudiantematerium,  :estudiante => estudiante9, :materium => ms1,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
