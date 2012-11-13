@@ -126,7 +126,7 @@ class FachadaOfertaCursos
         estmaterias.each do |em|
             tipoEstudiante = em.estudiante.tipo_estudiante
             
-            if(em.periodo.id == idPeriodo) then
+            if(em.periodo.id == idPeriodo and em.materium.id == idMateria) then
               #cuenta cant estudiantes pregrado que toman la materia en el periodo
               if (tipoEstudiante == "pregrado") then
                 if (mapaResultados["cantidadPregrado"] == nil) then
@@ -167,9 +167,15 @@ class FachadaOfertaCursos
     end 
   end
   
-  def definirOfertaCursos(idsMaterias)
+  def definirOfertaCursos(idsMaterias, idPeriodo)
     if (idsMaterias != nil) then
-      
+      periodo = Periodo.find(idPeriodo)
+      idsMaterias.each do |idMat|
+        materia = Materium.find(idMat)
+        
+        OfertaCursosPeriodo oferta = OfertaCursosPeriodo.new
+        oferta.materium = materia
+      end   
     end
   end
 end
