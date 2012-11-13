@@ -32,7 +32,8 @@
 <% materias.each do |materium| %>
 <tr>
 	<td style="background-color: <%= if(materium.estop == true) then "yellow" end %>;">
-		<%= link_to materium.codigo, materium, :class => 'linkitem' %>
+		
+		<%= link_to materium.codigo, oferta_cursos_detalle_index_path(:periodo => @periodo_seleccionado, :materiaid => materium.id), :class => 'linkitem' %>
 		<%= materium.nombre %></td>
 	<td><input type="checkbox" /></td>
 </tr>

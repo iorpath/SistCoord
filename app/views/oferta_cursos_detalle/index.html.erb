@@ -1,0 +1,34 @@
+<h1 align="center">Detalle de Oferta</h1>
+
+<% if flash[:periodof] %>
+<p>Periodo <%= flash[:periodof]%></p>
+<p>Materia <%= flash[:materiaidf]%></p>
+<% end %>
+
+
+<table>
+	<tr>
+		<td>Nombre de materia <%= @mapadetalle["nombre"] %></td>
+	</tr>
+	<tr>
+		<td>Nombre de maestria <%= @mapadetalle["maestria"] %></td>
+	</tr>
+	<tr>
+		<td>Cantidad de estudiantes de pregrado que planearon esta materia: <%= @mapadetalle["cantidadPregrado"].to_s %></td>
+	</tr>
+	<tr>
+		<td>Cantidad de estudiantes de maestria que planearon esta materia:  <%= @mapadetalle["cantidadMaestria"].to_s %></td>
+	</tr>
+</table>
+<table>		
+<% @maestriasDetalle = Maestrium.all %>
+<% @maestriasDetalle.each do |maestria| %>
+	<% if(@mapadetalle[maestria.codigo] != nil) then %>
+	<tr>
+		<td>
+			Maestria  <%=  maestria.nombre %> cantidad <%= @mapadetalle[maestria.codigo]%>
+	    </td>
+	</tr>
+	<% end %>
+<% end %>
+</table>
