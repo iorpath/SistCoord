@@ -25,6 +25,28 @@
 
 <div style="padding-top: 30px">
 	<h2>Materias</h2>
+
+	<div class = "row-fluid">
+		<div class = "span2">
+			<table class = "table">
+				<tr>
+					<th>Lectura</th>
+				</tr>
+				<tr class="success">
+					<td>Aprobada</td>
+				</tr>
+				<tr class="info">
+					<td>Inscrita</td>
+				</tr>
+				<tr class="warning" style= "background-color: #FFFF99">
+					<td>Planeada</td>
+				</tr>
+				<tr class="error">
+					<td>Pendiente</td>
+				</tr>
+			</table>
+		</div>
+	</div>
 	<h2><small> Plan de estudios </small></h2>
 	<div>
 		<% @materias.each do |periodo, materias_periodos|%>
@@ -39,7 +61,7 @@
 					</tr>
 					<%if not mats.empty?%>
 					<%mats.each do |m|%>
-					<%estado = @estudiante.estado_materia(m) %>
+					<% estado = @estudiante.estado_materia(m) %>
 					<% if estado == "vista"%>
 					<tr class="success">
 						<%elsif estado== "inscrita"%>
@@ -49,7 +71,7 @@
 						<%else%>
 					<tr class="error">
 						<%end%>
-						<td><%= m.nombre%></td>
+						<td><%= link_to m.nombre, new_estudiante_materia_path(@estudiante,m)%></td> 
 					</tr>
 					<%end%>
 					<%else%>

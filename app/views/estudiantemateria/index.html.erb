@@ -1,0 +1,21 @@
+<h1>Listing estudiantemateria</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @estudiantemateria.each do |estudiantematerium| %>
+  <tr>
+    <td><%= link_to 'Show', estudiantematerium %></td>
+    <td><%= link_to 'Edit', edit_estudiantematerium_path(estudiantematerium) %></td>
+    <td><%= link_to 'Destroy', estudiantematerium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Estudiantematerium', new_estudiantematerium_path %>

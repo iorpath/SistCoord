@@ -50,6 +50,14 @@ class Estudiante < ActiveRecord::Base
     return
   end
 
+  def dar_materias_paneadas(periodo)
+    materias = []
+    estudiante_materia = self.estudiantemateria.where :estado=>"planeada", :periodo_id=>periodo
+    estudiante_materia.each do |em|
+    materias << em.materium
+    end
+    return materias
+  end
   #Callback para asegurar que un estudiante siempre tiene una carpeta creada
   protected
 

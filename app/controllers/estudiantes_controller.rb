@@ -124,4 +124,11 @@ class EstudiantesController < ApplicationController
       @periodos = @carpeta.periodo_estudiante
     end
   end
+  
+  def planeacion
+     @estudiante = User.find(params[:id]).estudiante
+    if @estudiante.nil?
+      @estudiante = Estudiante.find params[:id]
+    end
+  end
 end
