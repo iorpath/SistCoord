@@ -171,7 +171,7 @@ class FachadaOfertaCursos
     if (idsMaterias != nil) then
       periodo = Periodo.find(idPeriodo)
       idsMaterias.each do |idMat|
-        materia = Materium.find(idMat)
+        materia = Materium.find(idMat.to_i)
         oferta = OfertaCursosPeriodo.new
         oferta.periodo = Periodo.find(idPeriodo)
         oferta.materium = materia
@@ -180,7 +180,7 @@ class FachadaOfertaCursos
         if (estmat != nil) then 
           estmatborrarids = []
           estmat.each do |est|
-            if(est.periodo.id == idPeriodo and est.estado == "planeada") then
+            if(est.periodo.id == idPeriodo.to_i and est.estado == "planeada") then
               if(idsMaterias.include?(est.materium.id)) then
                 #no se hace nada
               else
@@ -190,7 +190,6 @@ class FachadaOfertaCursos
           end  
           estmatborrarids.each do |idb|
             estmatborrar = Estudiantematerium.find(idb)
-            puts idb
             estmatborrar.destroy
           end      
         end
