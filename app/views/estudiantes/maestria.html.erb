@@ -2,6 +2,7 @@
 	<h1>Informacion <%= @maestria.nombre%> </h1>
 	<h1><small> Pensum <% @pensum.nombre%> </small></h1>
 </div>
+
 <div>
 	<p>
 		<strong> Codigo: </strong>
@@ -16,79 +17,52 @@
 		Pendiente
 		<%end%>
 	</p>
-
 	<p>
 		<strong> Fecha de Creacion: </strong>
 		<%= @pensum.fechacreacion%>
 	</p>
 </div>
+
 <div style="padding-top: 30px">
 	<h2>Materias</h2>
-	<h2><small> Plan de estudios sugerido </small></h2>
+	<h2><small> Plan de estudios </small></h2>
 	<div>
-		<h3> Periodo </h3>
-		<p>
-			<div class "row-fluid">
-				<div class = "span3">
-					<table class="table table-bordered">
-						<tr class="success">
-							<th>Fundamentacion</th>
-						</tr>
-						<tr >
-							<td class="success">asdf</td>
-						</tr>
-						<td></td>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-				<div class = "span3">
-					<table class="table  table-bordered">
-						<tr class="success">
-							<th>Profundizacion</th>
-						</tr>
-						<tr >
-							<td class="success">asdf</td>
-						</tr>
-						<td></td>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-				<div class = "span3">
-					<table class="table  table-bordered">
-						<tr class="success">
-							<th>Complemento</th>
-						</tr>
-						<tr >
-							<td class="success">asdf</td>
-						</tr>
-						<td></td>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-				<div class = "span2">
-					<table class="table  table-bordered">
-						<tr class="success">
-							<th>Integracion</th>
-						</tr>
-						<tr >
-							<td class="success">asdf</td>
-						</tr>
-						<td></td>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-				</div>
+		<% @materias.each do |periodo, materias_periodos|%>
+		<div class ="row-fluid">
+			<h4> <%= periodo%> </h4>
+			<% materias_periodos.each do |area_materias|%>
+			<% mats= area_materias[1]%>
+			<div class = "span2" style="width: 20%">
+				<table class="table table-bordered">
+					<tr>
+						<th><%= area_materias[0]%></th>
+					</tr>
+					<%if not mats.empty?%>
+					<%mats.each do |m|%>
+					<%estado = @estudiante.estado_materia(m) %>
+					<% if estado == "vista"%>
+					<tr class="success">
+						<%elsif estado== "inscrita"%>
+					<tr class="warning" style= "background-color: #FFFF99">
+						<%elsif estado== "planeada"%>
+					<tr class="info">
+						<%else%>
+					<tr class="error">
+						<%end%>
+						<td><%= m.nombre%></td>
+					</tr>
+					<%end%>
+					<%else%>
+					<tr style= "background-color: #FFFFF0">
+						<td >disponible</td>
+					</tr>
+					<%end%>
+
+				</table>
 			</div>
+			<%end%>
+		</div>
+		<% end %>
 
-		</p>
 	</div>
-
 </div>
-

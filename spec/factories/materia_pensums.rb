@@ -6,5 +6,6 @@ FactoryGirl.define do
     materium nil
     descripcion "MyText"
     cantidad 1
+    area "MyText"
   end
 end

@@ -10,23 +10,49 @@ class Estudiante < ActiveRecord::Base
   attr_accessible :direccion, :documento, :foto, :telefono, :tipo_documento, :tipo_estudiante, :user, :user_id, :pensums, :carpeta
   mount_uploader :foto, FileUploader
   after_create :crear_carpeta
-  
   #Retorna si una materia ya fue aprobada por el estudiante
   def is_materia_aprobada?(materia)
-    secciones_estudiante = self.seccions
-    if not secciones_estudiante.empty?
-      secciones_estudiantes.each do |seccion|
-        if seccion.materia == materia
-          if seccion.estado == "aprobado"
-            return true
+    estudiante_materia = self.estudiantemateria
+    if not estudiante_materia.empty?
+      estudiante_materia.each do |em|
+        if em.materia == materia
+          if em.estado == "vista"
+          return true
           end
         end
       end
     end
     return false
   end
-  
+
+  def estado_materia (materia)
+    estado = ""
+    estudiante_materia = self.estudiantemateria
+    if not estudiante_materia.empty?
+      estudiante_materia.each do |em|
+        if em.materium == materia
+           estado = em.estado
+        end
+      end
+    else
+      estado = "pendiente"
+    end
+    return estado
+  end
+
+  #Retorna los periodos en los que ha estado activo un estudiante(inscrito materias)
+  def dar_periodos()
+    periodos = []
+    result_set = self.estudiantemateria.find_by_sql("SELECT distinct periodo_id FROM estudiantemateria GROUP BY periodo_id,id")
+    result_set.each do |estudiante_materium|
+      periodos.push(estudiante_materium.periodo)
+    end
+    return
+  end
+
+  #Callback para asegurar que un estudiante siempre tiene una carpeta creada
   protected
+
   def crear_carpeta
     carpeta = Carpeta.create
     periodo = PeriodoEstudiante.create :periodo => Periodo.last
@@ -34,6 +60,5 @@ class Estudiante < ActiveRecord::Base
     carpeta.save
     self.carpeta = carpeta
   end
-  
 
 end
