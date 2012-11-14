@@ -135,12 +135,12 @@ end
  equalMat = Materium.all.first
  
  
- FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m4,  :periodo => periodo3, :area => "Fundamentacion", :estado => "vista"
- FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m2,  :periodo => periodo3, :area => "Fundamentacion", :estado => "vista"
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m4,  :periodo => periodo3, :area => "Fundamentacion", :estado => "planeada"
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante1, :materium => m2,  :periodo => periodo3, :area => "Fundamentacion", :estado => "planeada"
  
  FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m1,  :periodo => periodo1, :area => "Fundamentacion", :estado => "vista"
  FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m2,  :periodo => periodo2, :area => "Profundizacion", :estado => "vista"
- FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m3,  :periodo => periodo3, :area => "Complemento", :estado => "inscrita"
+ FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m3,  :periodo => periodo3, :area => "Complemento", :estado => "planeada"
  FactoryGirl.create :estudiantematerium,  :estudiante => estudiante, :materium => m4,  :periodo => periodo2, :area => "Integracion", :estado => "planeada"
  
 #****************************

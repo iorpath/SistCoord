@@ -7,7 +7,7 @@ class OfertaCursosController < ApplicationController
     else
       @periodo_seleccionado = @periodos.first.id
     end
-    
+    session[:perselsess] = @periodo_seleccionado
     if(params[:top] != nil) then
       @top_seleccionado = params[:top]
       #flash[:notice] = @top_seleccionado
@@ -21,6 +21,18 @@ class OfertaCursosController < ApplicationController
   end
   
   def create
-   
+    @materiasSeleccionadas = params[:materium_ids]
+    @fach = FachadaOfertaCursos.new
+    #flash[:estado] = ' '
+    #@materiasSeleccionadas.each do |p|
+    # flash[:estado] = flash[:estado] + p + ","
+    #end
+     
+    @fach.definirOfertaCursos(@materiasSeleccionadas, session[:perselsess].to_i)
+    
+    respond_to do |format|
+        format.html { redirect_to oferta_cursos_path, notice: 'Resgistro de cursos creado exitosamente.' }
+        format.json { render json: oferta_cursos_path, status: :created, location: oferta_cursos_path }
+    end
   end
 end
