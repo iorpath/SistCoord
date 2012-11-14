@@ -187,7 +187,7 @@ end
 
 if User.find_by_name("Carlos Test").nil?
  userE3 = FactoryGirl.create :user, :name =>"Carlos Test", :email =>"ce.diaz30@uniandes.edu.co", :password => "geheim", :password_confirmation => 'geheim'
- estudiante3 = FactoryGirl.create :estudiante2
+ estudiante3 = FactoryGirl.create :estudiante
  estudiante3.tipo_estudiante = "maestria"
  estudiante3.save
   userE3.estudiante = estudiante3
