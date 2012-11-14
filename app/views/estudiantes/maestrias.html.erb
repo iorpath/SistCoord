@@ -17,7 +17,7 @@
 	    <td>En progreso </td>
 	    <%end%>
 	    <td><%= pensum.created_at %></td>
-	    <td><%= link_to 'Ver', estudiante_maestria_path(@estudiante,pensum) %></td>
+	    <td><%= link_to 'Ver', estudiante_maestria_path(@estudiante,pensum), :class=>'btn btn-info'%></td>
 	  </tr>
 	<% end %>
 <% else %>

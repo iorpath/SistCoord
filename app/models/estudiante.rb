@@ -26,18 +26,12 @@ class Estudiante < ActiveRecord::Base
   end
 
   def estado_materia (materia)
-    estado = ""
-    estudiante_materia = self.estudiantemateria
-    if not estudiante_materia.empty?
-      estudiante_materia.each do |em|
-        if em.materium == materia
-           estado = em.estado
-        end
-      end
+    em = Estudiantematerium.encontrar(materia,self)
+    if not em.nil?
+    return em.estado
     else
-      estado = "pendiente"
+      return "pendiente"
     end
-    return estado
   end
 
   #Retorna los periodos en los que ha estado activo un estudiante(inscrito materias)
@@ -54,9 +48,22 @@ class Estudiante < ActiveRecord::Base
     materias = []
     estudiante_materia = self.estudiantemateria.where :estado=>"planeada", :periodo_id=>periodo
     estudiante_materia.each do |em|
-    materias << em.materium
+      materias << em.materium
     end
     return materias
+  end
+
+  def inscribir_materia(materia, periodo)
+    estudiante_materia = Estudiantematerium.encontrar(materia, self)
+    if estudiante_materia.nil?
+      estudiante_materia = Estudiantematerium.create :estado=>"planeada", :estudiante=>self, :materium=>materia, :periodo=>periodo
+    else
+      if not estudiante_materia.estado == "inscrita" or estudiante_materia.estado == "aprobada"
+        estudiante_materia.estado = "planeada"
+        estudiante_materia.periodo = periodo
+      end
+    end
+    estudiante_materia.save
   end
   #Callback para asegurar que un estudiante siempre tiene una carpeta creada
   protected

@@ -69,14 +69,12 @@ class EstudiantemateriaController < ApplicationController
     end
   end
 
-  # DELETE /estudiantemateria/1
-  # DELETE /estudiantemateria/1.json
   def destroy
     @estudiantematerium = Estudiantematerium.find(params[:id])
     @estudiantematerium.destroy
-
+    @estudiante = Estudiante.find(params[:estudiante_id])
     respond_to do |format|
-      format.html { redirect_to estudiantemateria_url }
+      format.html { redirect_to estudiante_planeacion_url(@estudiante) }
       format.json { head :no_content }
     end
   end

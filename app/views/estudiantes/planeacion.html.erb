@@ -1,40 +1,61 @@
 <div class="page-header">
 	<h1>Inscripcion de Cursos</h1>
-	<h1><small> Periodo <%= Periodo.actual.nombre%></small></h1>
-
+	<h1><small> Periodo <%= @periodo.nombre%></small></h1>
+	<%= session.inspect%>
+	<%= params.inspect%>
 	<div style="padding-top: 30px">
-		<h2>Materias Inscritas</h2>
+		<h3>Materias Inscritas</h3>
 		<div class = "row-fluid">
-			<div class = "span4">
+			<div class = "span5">
 				<table class = "table table-striped">
 					<tr>
 						<th>Materia</th>
+						<th>Acciones</th>
 					</tr>
+					<%@materias_planeadas.each do |materia|%>
 					<tr>
-						<td>Materia</td>
+						<td><%= materia.nombre%></td>
+						<td> <%= link_to 'Borrar',estudiante_materium_path(@estudiante,Estudiantematerium.encontrar_id("planeada",@periodo,materia,@estudiante)),:method=> :delete, data: { confirm: 'Esta seguro de realizar la eliminacion?' }, :class => 'btn btn-danger' %> </td>
+						<td style="display: none"><%=%></td>
+
 					</tr>
-					<tr>
-						<td>Materia</td>
-					</tr>
+					<%end%>
+
 				</table>
 			</div>
 		</div>
+		<%if not @pensum.nil?%>
+		<div class = "row-fluid">
+			<td> <%= link_to 'Volver',estudiante_maestria_path(@estudiante,@pensum), :class => 'btn btn-info' %> </td>
+		</div>
+		<%end%>
 	</div>
 
 	<div style="padding-top: 30px">
+		<h3>Oferta de Cursos</h3>
+		<%= form_tag inscribir_materias_estudiante_path(@estudiante), :method=>:put do %>
+		<div class ="row-fluid">
+			<%= submit_tag "Agregar", :class => 'btn btn-info'%>
+		</div>
 		<div class = "row-fluid">
-			<div class = "span2">
-				<table class = "table table-striped">
+			<%@materias_maestrias.each do |maestria, materias|%>
+			<div class = "span4" style="padding-top: 30px">
+				<table class = "table table-bordered">
 					<tr>
-						<th>Maestria</th>
+						<th><%= maestria%></th>
+						<th>Seleccionar</th>
 					</tr>
+					<%materias.each do |materia|%>
 					<tr>
-						<td>Materia</td>
+						<td><%= materia.nombre%></td>
+						<td style="text-align: center"><%= check_box_tag "materia_id[]", materia.id %></td>
 					</tr>
-					<tr>
-						<td>Materia</td>
-					</tr>
+					<%end%>
+
 				</table>
 			</div>
+			<%end%>
+			<%end%>
+
 		</div>
 	</div>

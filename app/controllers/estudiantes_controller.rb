@@ -98,8 +98,8 @@ class EstudiantesController < ApplicationController
       @estudiante = Estudiante.find params[:id]
     end
     @pensum = Pensum.find params[:id_pensum]
+    session[:pensum] = @pensum.id
     @maestria = @pensum.maestrium
-
     @materias = @pensum.dar_materias
   end
 
@@ -124,11 +124,47 @@ class EstudiantesController < ApplicationController
       @periodos = @carpeta.periodo_estudiante
     end
   end
-  
+
   def planeacion
-     @estudiante = User.find(params[:id]).estudiante
+    if session[:periodo].nil?
+      @periodo = Periodo.actual
+      session[:periodo] = @periodo.id
+    else
+      @periodo = Periodo.find session[:periodo]
+    end
+    if session[:pensum].nil?
+      @pensum = nil
+    else
+      @pensum = session[:pensum]
+    end
+    @estudiante = User.find(params[:id]).estudiante
     if @estudiante.nil?
       @estudiante = Estudiante.find params[:id]
+    end
+    @materias_planeadas = @estudiante.dar_materias_paneadas(@periodo)
+    @materias_maestrias = FachadaOfertaCursos.dar_materias_maestrias
+  end
+
+  def planificar_materias
+    @estudiante = User.find(params[:id]).estudiante
+    if @estudiante.nil?
+      @estudiante = Estudiante.find params[:id]
+    end
+  end
+
+  def inscribir_materias
+    @periodo = Periodo.find session[:periodo]
+    @estudiante = User.find(params[:id]).estudiante
+    if @estudiante.nil?
+      @estudiante = Estudiante.find params[:id]
+    end
+    @materias=[]
+    if not params[:materia_id].nil?
+      params[:materia_id].each do|id|
+        materia = Materium.find(id)
+        @estudiante.inscribir_materia(materia,@periodo)
+      end
+      redirect_to estudiante_planeacion_path @estudiante
     end
   end
 end

@@ -197,4 +197,32 @@ class FachadaOfertaCursos
       end   
     end
   end
+  
+  #hash con las maestrias y sus materias
+  def self.dar_materias_maestrias
+    maestrias = Maestrium.all
+    materias = {}
+    
+    maestrias.each do |maestria|
+      materias[maestria.nombre]= self.darMateriasMaestria(maestria)
+    end
+    
+    return materias
+  end
+  
+    def self.darMateriasMaestria(idMaestria)
+    maestria = Maestrium.find(idMaestria)
+    materiasretorno = []
+    if(maestria.pensums != nil) then
+      if(maestria.pensums.length > 0) then
+        pensum = maestria.pensums.last
+        if(pensum.materia != nil) then
+          pensum.materia.each do |materium|
+            materiasretorno << materium
+          end
+        end
+      end
+     end
+     return materiasretorno
+  end
 end

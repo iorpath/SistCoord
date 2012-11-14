@@ -25,9 +25,13 @@ SistCoord::Application.routes.draw do
   resources :llenar_encuesta
 
   resources :estudiantes do
-    resources :estudiantemateria, :only=>[:show, :index], :as=> :materia
+    resources :estudiantemateria, :only=>[:new, :index, :destroy], :as=> :materia
     member do
       get 'menu'
+      put 'inscribir_materias'
+    end
+    collection do
+      match '/:id/planificar_materias' => 'estudiantes#planificar_materias', :via=>:get, :as=>:planificar_materias
     end
   end
 
@@ -54,6 +58,8 @@ SistCoord::Application.routes.draw do
   match 'estudiantes/:id/materium/:id_materium/new/' => 'estudiantemateria#new', :as => :new_estudiante_materia
   
   match 'estudiantes/:id/planeacion/' => 'estudiantes#planeacion', :as => :estudiante_planeacion
+  
+
   resources :materias_periodo, :only => [:index]
 
   resources :oferta_cursos
