@@ -176,24 +176,24 @@ class FachadaOfertaCursos
         oferta.periodo = Periodo.find(idPeriodo)
         oferta.materium = materia
         oferta.save
-        estmat = Estudiantematerium.all
-        if (estmat != nil) then 
-          estmatborrarids = []
-          estmat.each do |est|
-            if(est.periodo.id == idPeriodo.to_i and est.estado == "planeada") then
-              if(idsMaterias.include?(est.materium.id)) then
-                #no se hace nada
-              else
-                estmatborrarids << est.id
-              end 
-            end
-          end  
-          estmatborrarids.each do |idb|
-            estmatborrar = Estudiantematerium.find(idb)
-            estmatborrar.destroy
-          end      
-        end
       end   
+      estmat = Estudiantematerium.all
+      if (estmat != nil) then 
+        estmatborrarids = []
+        estmat.each do |est|
+          if(est.periodo.id == idPeriodo.to_i and est.estado == "planeada") then
+            if(idsMaterias.include?(est.materium.id)) then
+              #no se hace nada
+            else
+              estmatborrarids << est.id
+            end 
+          end
+        end  
+        estmatborrarids.each do |idb|
+          estmatborrar = Estudiantematerium.find(idb)
+          estmatborrar.destroy
+        end      
+      end
     end
   end
 end
