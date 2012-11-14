@@ -23,10 +23,10 @@ class OfertaCursosController < ApplicationController
   def create
     @materiasSeleccionadas = params[:materium_ids]
     @fach = FachadaOfertaCursos.new
-    flash[:estado] = ' '
-    @materiasSeleccionadas.each do |p|
-     flash[:estado] = flash[:estado] + p + ","
-    end
+    #flash[:estado] = ' '
+    #@materiasSeleccionadas.each do |p|
+    # flash[:estado] = flash[:estado] + p + ","
+    #end
      
     @fach.definirOfertaCursos(@materiasSeleccionadas, session[:perselsess].to_i)
     
