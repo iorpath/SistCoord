@@ -180,7 +180,7 @@ class FachadaOfertaCursos
         if (estmat != nil) then 
           estmatborrarids = []
           estmat.each do |est|
-            if(est.periodo.id == idPeriodo) then
+            if(est.periodo.id == idPeriodo and est.estado == "planeada") then
               if(idsMaterias.include?(est.materium.id)) then
                 #no se hace nada
               else
