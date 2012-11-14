@@ -169,11 +169,11 @@ class FachadaOfertaCursos
   
   def definirOfertaCursos(idsMaterias, idPeriodo)
     if (idsMaterias != nil) then
-      periodo = Periodo.find(idPeriodo)
+      periodo = Periodo.find(idPeriodo.to_i)
       idsMaterias.each do |idMat|
         materia = Materium.find(idMat.to_i)
         oferta = OfertaCursosPeriodo.new
-        oferta.periodo = Periodo.find(idPeriodo)
+        oferta.periodo = Periodo.find(idPeriodo.to_i)
         oferta.materium = materia
         oferta.save
       end   
@@ -182,7 +182,7 @@ class FachadaOfertaCursos
         estmatborrarids = []
         estmat.each do |est|
           if(est.periodo.id == idPeriodo.to_i and est.estado == "planeada") then
-            if(idsMaterias.include?(est.materium.id)) then
+            if(idsMaterias.include?(est.materium.id.to_s)) then
               #no se hace nada
             else
               estmatborrarids << est.id
