@@ -8,16 +8,20 @@
 
 <table>
 	<tr>
-		<td>Nombre de materia <%= @mapadetalle["nombre"] %></td>
+		<td><p style="font-weight: bold; background-color: gainsboro"> Maestrìa: </p><%= @mapadetalle["maestria"] %></td>
 	</tr>
 	<tr>
-		<td>Nombre de maestria <%= @mapadetalle["maestria"] %></td>
+		<td><p style="font-weight: bold; background-color: gainsboro">Materia: </p><%= @mapadetalle["nombre"] %></td>
 	</tr>
 	<tr>
-		<td>Cantidad de estudiantes de pregrado que planearon esta materia: <%= @mapadetalle["cantidadPregrado"].to_s %></td>
+		<td><p style="font-weight: bold; background-color: gainsboro">Cantidad de 
+			estudiantes de pregrado que planearon esta materia: </p>
+			<%= if(@mapadetalle["cantidadPregrado"] != nil) then @mapadetalle["cantidadPregrado"].to_s else "0" end %></td>
 	</tr>
 	<tr>
-		<td>Cantidad de estudiantes de maestria que planearon esta materia:  <%= @mapadetalle["cantidadMaestria"].to_s %></td>
+		<td><p style="font-weight: bold; background-color: gainsboro">Cantidad de 
+			estudiantes de maestria que planearon esta materia: </p> 
+			<%= if(@mapadetalle["cantidadMaestria"] != nil) then @mapadetalle["cantidadMaestria"].to_s else "0" end %></td>
 	</tr>
 </table>
 <table>		
@@ -32,3 +36,6 @@
 	<% end %>
 <% end %>
 </table>
+<div align="center" style="width: 100%">
+	<%= link_to 'Regresar', oferta_cursos_path,:class => 'btn btn-primary' %>
+</div>

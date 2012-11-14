@@ -5,6 +5,6 @@ class OfertaCursosDetalleController < ApplicationController
     #flash[:periodof] = params[:periodo]
     #flash[:materiaidf] = params[:materiaid]
     @fach = FachadaOfertaCursos.new
-    @mapadetalle = @fach.darDetallesMateria(params[:materiaid], params[:periodo])
+    @mapadetalle = @fach.darDetallesMateria(params[:materiaid].to_i, params[:periodo].to_i)
   end
 end
